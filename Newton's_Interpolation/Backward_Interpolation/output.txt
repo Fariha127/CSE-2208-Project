@@ -1,0 +1,9 @@
+Backward Difference Table:
+
+    1891	        46	
+    1901	        66	        20	
+    1911	        81	        15	        -5	
+    1921	        93	        12	        -3	         2	
+    1931	       101	         8	        -4	        -1	        -3	
+
+Interpolated value at X = 1925 is Y = 96.8368
