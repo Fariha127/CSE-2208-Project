@@ -1,16 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-double u_term(double u, int n)
-{
-    double temp = u;
-    for (int i = 1; i < n; i++)
-        temp = temp * (u + i);
-    return temp;
-}
-
-
 int factorial(int n)
 {
     int f = 1;
@@ -52,7 +42,8 @@ int main()
             y[j][i] = y[j][i - 1] - y[j - 1][i - 1];
     }
 
-    fout << "Backward Difference Table:\n\n";
+    fout << "Backward Difference Table:" << endl << endl;
+
     for (int i = 0; i < n; i++) {
         fout << setw(8) << x[i] << "\t";
         for (int j = 0; j <= i; j++)
@@ -61,10 +52,12 @@ int main()
     }
 
     double sum = y[n - 1][0];
-    double u = (value - x[n - 1]) / (x[1] - x[0]);
+    double v = (value - x[n - 1]) / (x[1] - x[0]);
     
+    double v_term = v;
     for (int i = 1; i < n; i++) {
-        sum = sum + (u_term(u, i) * y[n - 1][i]) / factorial(i);
+        sum = sum + (v_term * y[n - 1][i]) / factorial(i);
+        v_term = v_term * (v + i);
     }
 
     fout << "\nInterpolated value at X = " << value << " is Y = " << sum << endl;
