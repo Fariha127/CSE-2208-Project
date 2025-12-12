@@ -1,0 +1,6 @@
+Test Case 1:
+Approximate integral from 0.000 to 2.000 is = 8.667
+
+Test Case 2:
+Approximate integral from 1.000 to 3.000 is = 18.667
+
