@@ -1,0 +1,9 @@
+Forward Difference Table:
+
+    1891	        46	        20	        -5	         2	        -3	
+    1901	        66	        15	        -3	        -1	
+    1911	        81	        12	        -4	
+    1921	        93	         8	
+    1931	       101	
+
+Interpolated value at X = 1895 is Y = 54.8528
