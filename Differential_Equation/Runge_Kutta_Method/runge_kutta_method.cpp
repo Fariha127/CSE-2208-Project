@@ -44,7 +44,7 @@ int main() {
     cout << fixed << setprecision(4);
     cout << "Result of y at x = " << x << "is : " << result << endl;
 
-    outFile << fixed << setprecision(6);
+    outFile << fixed << setprecision(4);
     outFile << "Result of y at x = " << x << "is : " << result << endl;
      }
 
