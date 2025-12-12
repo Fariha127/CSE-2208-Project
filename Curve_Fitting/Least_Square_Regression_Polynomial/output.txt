@@ -1,0 +1,10 @@
+Test Case 1:
+Polynomial Degree: 2
+Function: y = 0.0000 + -0.0000*x^1 + 1.0000*x^2
+Predicted y for x = 6.0000: 36.0000
+
+Test Case 2:
+Polynomial Degree: 3
+Function: y = 0.0000 + -0.0000*x^1 + 0.0000*x^2 + 1.0000*x^3
+Predicted y for x = 5.0000: 125.0000
+
