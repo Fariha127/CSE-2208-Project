@@ -1,16 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-float v_term(float u, int n)
-{
-    float temp = u;
-    for (int i = 1; i < n; i++)
-        temp = temp * (u - i);
-    return temp;
-}
-
-
 int factorial(int n)
 {
     int f = 1;
@@ -56,7 +46,7 @@ int main()
     }
 
     
-    fout << "Forward Difference Table:\n\n";
+    fout << "Forward Difference Table:" << endl << endl;
     for (int i = 0; i < n; i++) {
         fout << setw(8) << x[i] << "\t";
         for (int j = 0; j < n - i; j++)
@@ -68,8 +58,10 @@ int main()
     float sum = y[0][0];
     float u = (value - x[0]) / (x[1] - x[0]);
     
+    float u_term = u;
     for (int i = 1; i < n; i++) {
-        sum = sum + (v_term(u, i) * y[0][i]) / factorial(i);
+        sum = sum + (u_term * y[0][i]) / factorial(i);
+        u_term = u_term * (u - i);
     }
 
     fout << "\nInterpolated value at X = " << value << " is Y = " << sum << endl;
