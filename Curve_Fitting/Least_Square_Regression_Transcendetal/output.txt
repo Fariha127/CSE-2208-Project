@@ -1,0 +1,15 @@
+Test Case 1:
+Exponential Regression
+Function: y = 0.999919 * e^(1.000021 * x)
+Predicted y for x=6.000000: 403.446792
+
+Test Case 2:
+Logarithmic Regression
+Function: y = -0.000017 + 1.000004 * ln(x)
+Predicted y for x=5.000000: 1.609428
+
+Test Case 3:
+Power-law Regression
+Function: y = 1.780428 * x^1.492058
+Predicted y for x=5.000000: 19.652962
+
