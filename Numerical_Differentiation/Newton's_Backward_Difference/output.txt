@@ -1,0 +1,2 @@
+
+At x = 4, Derivative = 52.1972
