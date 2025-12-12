@@ -1,0 +1,6 @@
+Test Case 1:
+Error: Number of intervals (n) must be a multiple of 3.
+
+Test Case 2:
+Approximate integral from 1.000 to 3.000 is = 18.667
+
