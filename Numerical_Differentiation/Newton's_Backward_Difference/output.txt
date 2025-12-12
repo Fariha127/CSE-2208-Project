@@ -1,2 +1,2 @@
 
-At x = 4, Derivative = 52.1972
+At x = 3.4, Derivative = 30.5605
