@@ -82,7 +82,6 @@ int main() {
 
     vector<pair<double, double>> ranges;
 
-
     for (double i = -x_max; i < x_max; i += 0.1) {
         double a = func(i);
         double b = func(i + 0.1);
