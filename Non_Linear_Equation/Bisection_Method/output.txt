@@ -1,0 +1,15 @@
+The polynomial function is: f(x) = 1x^4 -3x^3 +2x^2 +6x^1 
+
+Range found: [-1.1, -1]
+Exact root found at x = -1
+Range found: [-0.1, 1.52656e-15]
+Exact root found at x = 1.52656e-15
+
+Root 1:
+No. of iteration: 4
+The root is: -1.00312
+
+Root 2:
+No. of iteration: 4
+The root is: -0.003125
+
