@@ -1,0 +1,10 @@
+The polynomial function is: f(x) = 1x^2 -4
+
+Root 1:
+The root is: -2
+Iteration needed: 4
+
+Root 2:
+The root is: 2
+Iteration needed: 4
+

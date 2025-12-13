@@ -43,7 +43,6 @@ void bisection(double a, double b) {
         }
     }
 
-    c = (a + b) / 2;
     fout << "No. of iteration: " << itr << endl;
     fout << "The root is: " << c << endl << endl;
 }
