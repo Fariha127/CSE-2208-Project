@@ -1,0 +1,12 @@
+
+Determinant = 1
+
+Unique solution exists.
+
+Inverse Matrix:
+         5         -2          1 
+        -1          1         -1 
+        -3          1          0 
+
+Solution:
+3 1 2 
