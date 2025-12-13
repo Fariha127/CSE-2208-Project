@@ -21,11 +21,11 @@ int main()
   ifstream fin("input.txt");
 
     if (!fin) {
-        cout << "Error: Cannot open input.txt"<<endl;
+        fout << "Error: Cannot open input.txt"<<endl;
         return 1;
     }
     if (!fout) {
-        cout << "Error: Cannot open output.txt"<<endl;
+        fout << "Error: Cannot open output.txt"<<endl;
         return 1;
     }
 
