@@ -126,21 +126,150 @@ BISECTION METHOD - DOCUMENTATION Here
 #### Bisection Code
 
 ```cpp
-Code paste here
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+#define EP 0.01
+
+ofstream fout("output.txt");
+int degree;
+vector<double> coefficients;
+
+double func(double x) {
+    double result = 0.0;
+    for (int i = 0; i <= degree; i++) {
+        result += coefficients[i] * pow(x, i);
+    }
+    return result;
+}
+
+void bisection(double a, double b) {
+    int itr = 0;
+    if (func(a) * func(b) >= 0) {
+        fout << "No root found in range [" << a << ", " << b << "]" << endl;
+        return;
+    }
+
+    double c;
+
+    while ((b - a) >= EP) {
+        c = (a + b) / 2;
+        itr++;
+
+        if (func(c) == 0) {
+            break;
+        }
+        else if (func(a) * func(c) < 0) {
+            b = c;
+        }
+        else {
+            a = c;
+        }
+    }
+
+    fout << "No. of iteration: " << itr << endl;
+    fout << "The root is: " << c << endl << endl;
+}
+
+int main() {
+    ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    fin >> degree;
+
+    coefficients.resize(degree + 1);
+
+    for (int i = degree; i >=0; i--) {
+        fin >> coefficients[i];
+    }
+
+    fout << "The polynomial function is: f(x) = ";
+    for (int i = degree; i >= 0; i--) {
+        if (coefficients[i] != 0) {
+            if (i != degree && coefficients[i] > 0) fout << "+";
+            fout << coefficients[i];
+            if (i > 0) fout << "x^" << i << " ";
+        }
+    }
+    fout << endl << endl;
+
+    double x_max;
+    fin >> x_max;
+
+    vector<pair<double, double>> ranges;
+
+    for (double i = -x_max; i < x_max; i += 0.1) {
+        double a = func(i);
+        double b = func(i + 0.1);
+        
+        if (a * b < 0) {
+            ranges.push_back({i, i + 0.1});
+            fout << "Range found: [" << i << ", " << i + 0.1 << "]" << endl;
+        }
+        
+        else if (fabs(a) < EP) {
+            fout << "Exact root found at x = " << i << endl;
+        }
+    }
+    
+    if (fabs(func(x_max)) < EP) {
+        fout << "Exact root found at x = " << x_max << endl;
+    }
+
+    fout << endl;
+
+    for (int i = 0; i < ranges.size(); i++) {
+        fout << "Root " << i + 1 << ":" << endl;
+        bisection(ranges[i].first, ranges[i].second);
+    }
+
+    if (ranges.empty()) {
+        fout << "No roots found in the given range." << endl;
+    }
+
+    return 0;
+}
 ```
 
 <a id="bisection-input"></a>
 #### Bisection Input
 
 ```
-Input here
+4
+1 -3 2 6 0
+3
 ```
 
 <a id="bisection-output"></a>
 #### Bisection Output
 
 ```
-Output here
+The polynomial function is: f(x) = 1x^4 -3x^3 +2x^2 +6x^1 
+
+Range found: [-1.1, -1]
+Exact root found at x = -1
+Range found: [-0.1, 1.52656e-15]
+Exact root found at x = 1.52656e-15
+
+Root 1:
+No. of iteration: 4
+The root is: -1.00312
+
+Root 2:
+No. of iteration: 4
+The root is: -0.003125
 ```
 
 ---
@@ -159,21 +288,151 @@ Theory here
 #### False Position Code
 
 ```cpp
-Cpp here
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+#define EP 0.01
+
+ofstream fout("output.txt");
+int degree;
+vector<double> coefficients;
+
+double func(double x) {
+    double result = 0.0;
+    for (int i = 0; i <= degree; i++) {
+        result += coefficients[i] * pow(x, i);
+    }
+    return result;
+}
+
+void false_position(double a, double b) {
+    int itr = 0;
+    if (func(a) * func(b) >= 0) {
+        fout << "No root found in range [" << a << ", " << b << "]" << endl;
+        return;
+    }
+
+    double c;
+
+    while ((b - a) >= EP) {
+        c = (a * func(b) - b * func(a)) / (func(b) - func(a));
+        itr++;
+
+        if (func(c) == 0) {
+            break;
+        }
+        else if (func(a) * func(c) < 0) {
+            b = c;
+        }
+        else {
+            a = c;
+        }
+    }
+
+    fout << "No. of iteration: " << itr << endl;
+    fout << "The root is: " << c << endl << endl;
+}
+
+int main() {
+    ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    fin >> degree;
+
+    coefficients.resize(degree + 1);
+
+    for (int i = degree; i >=0; i--) {
+        fin >> coefficients[i];
+    }
+
+    fout << "The polynomial function is: f(x) = ";
+    for (int i = degree; i >= 0; i--) {
+        if (coefficients[i] != 0) {
+            if (i != degree && coefficients[i] > 0) fout << "+";
+            fout << coefficients[i];
+            if (i > 0) fout << "x^" << i << " ";
+        }
+    }
+    fout << endl << endl;
+
+    double x_max;
+    fin >> x_max;
+
+    vector<pair<double, double>> ranges;
+
+
+    for (double i = -x_max; i < x_max; i += 0.1) {
+        double a = func(i);
+        double b = func(i + 0.1);
+        
+        if (a * b < 0) {
+            ranges.push_back({i, i + 0.1});
+            fout << "Range found: [" << i << ", " << i + 0.1 << "]" << endl;
+        }
+        
+        else if (fabs(a) < EP) {
+            fout << "Exact root found at x = " << i << endl;
+        }
+    }
+    
+    if (fabs(func(x_max)) < EP) {
+        fout << "Exact root found at x = " << x_max << endl;
+    }
+
+    fout << endl;
+
+    for (int i = 0; i < ranges.size(); i++) {
+        fout << "Root " << i + 1 << ":" << endl;
+        false_position(ranges[i].first, ranges[i].second);
+    }
+
+    if (ranges.empty()) {
+        fout << "No roots found in the given range." << endl;
+    }
+
+    return 0;
+}
 ```
 
 <a id="false-position-input"></a>
 #### False Position Input
 
 ```
-Input Here
+4
+1 -3 2 6 0
+50
 ```
 
 <a id="false-position-output"></a>
 #### False Position Output
 
 ```
-Output here
+The polynomial function is: f(x) = 1x^4 -3x^3 +2x^2 +6x^1 
+
+Range found: [-1.1, -1]
+Exact root found at x = -1
+Range found: [-0.1, 4.41619e-13]
+Exact root found at x = 4.41619e-13
+
+Root 1:
+No. of iteration: 5
+The root is: -1
+
+Root 2:
+No. of iteration: 1
+The root is: -1.76831e-14
 ```
 
 ---
@@ -192,21 +451,116 @@ Theory Here
 #### Newton Raphson Code
 
 ```cpp
-Cpp Here
+#include <bits/stdc++.h>
+
+#define E 0.001
+
+using namespace std;
+
+
+ofstream fout("output.txt");
+int degree;
+vector<double> coefficients;
+
+double func(double x) {
+    double result = 0.0;
+    for (int i = 0; i <= degree; i++) {
+        result += coefficients[i] * pow(x, i);
+    }
+    return result;
+}
+
+double d_func(double x) {
+    double result = 0.0;
+    for (int i = 1; i <= degree; i++) {
+        result += i * coefficients[i] * pow(x, i - 1);
+    }
+    return result;
+}
+
+void newton_raphson(double x, int root_num) {
+
+    int itr = 0;
+    double h;
+
+    do {
+        h = func(x) / d_func(x);
+        x = x - h;
+        itr++;
+    } while (fabs(h) >= E);
+
+    fout << "Root " << root_num << ":" << endl;
+    fout << "The root is: " << x << endl;
+    fout << "Iteration needed: " << itr << endl << endl;
+}
+
+int main()
+{
+        ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    fin >> degree;
+
+    coefficients.resize(degree + 1);
+
+    for (int i = degree; i >=0; i--) {
+        fin >> coefficients[i];
+    }
+
+    fout << "The polynomial function is: f(x) = ";
+    for (int i = degree; i >= 0; i--) {
+        if (coefficients[i] != 0) {
+            if (i != degree && coefficients[i] > 0) fout << "+";
+            fout << coefficients[i];
+            if (i > 0) fout << "x^" << i << " ";
+        }
+    }
+    fout << endl << endl;
+
+    vector<double> initial_guesses(degree);
+    
+    for (int i = 0; i < degree; i++) {
+        fin >> initial_guesses[i];
+    }
+
+    for (int i = 0; i < degree; i++) {
+        newton_raphson(initial_guesses[i], i + 1);
+    }
+
+    return 0;
+}
 ```
 
 <a id="newton-raphson-input"></a>
 #### Newton Raphson Input
 
 ```
-Input Here
+2
+1 0 -4
+-1 3
 ```
 
 <a id="newton-raphson-output"></a>
 #### Newton Raphson Output
 
 ```
-Output here
+The polynomial function is: f(x) = 1x^2 -4
+
+Root 1:
+The root is: -2
+Iteration needed: 4
+
+Root 2:
+The root is: 2
+Iteration needed: 4
 ```
 
 ---
@@ -225,21 +579,120 @@ Theory here
 #### Secant Code
 
 ```cpp
-Cpp here
+#include<bits/stdc++.h>
+#include<cmath>
+using namespace std;
+#define E 0.001
+
+ofstream fout("output.txt");
+int degree;
+vector<double> coefficients;
+
+double f(double x) {
+    double result = 0.0;
+    for (int i = 0; i <= degree; i++) {
+        result += coefficients[i] * pow(x, i);
+    }
+    return result;
+}
+
+void secant (double x1, double x2, int root_num) {
+
+    int itr = 0;
+    double x0;
+
+    do {
+        x0 = ((x1 * f(x2) - x2 * f(x1)) / (f(x2) - f(x1)));
+
+        x1 = x2;
+        x2 = x0;
+
+        itr++;
+
+        if(f(x0) == 0) break;
+
+    } while (fabs(f(x0)) >= E);
+
+    fout << "Root " << root_num << ":" << endl;
+    fout << "The root is: " << x0 << endl;
+    fout << "Iteration needed: " << itr << endl << endl;
+
+}
+
+
+int main () {
+
+    ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    fin >> degree;
+
+    coefficients.resize(degree + 1);
+
+    for (int i = degree; i >=0; i--) {
+        fin >> coefficients[i];
+    }
+
+    fout << "The polynomial function is: f(x) = ";
+    for (int i = degree; i >= 0; i--) {
+        if (coefficients[i] != 0) {
+            if (i != degree && coefficients[i] > 0) fout << "+";
+            fout << coefficients[i];
+            if (i > 0) fout << "x^" << i << " ";
+        }
+    }
+    fout << endl << endl;
+
+    vector<pair<double, double>> initial_guesses(degree);
+    
+    fout << "Initial guess pairs: ";
+    for (int i = 0; i < degree; i++) {
+        fin >> initial_guesses[i].first >> initial_guesses[i].second;
+        fout << "(" << initial_guesses[i].first << ", " << initial_guesses[i].second << ")";
+        if (i < degree - 1) fout << ", ";
+    }
+    fout << endl << endl;
+
+    for (int i = 0; i < degree; i++) {
+        secant(initial_guesses[i].first, initial_guesses[i].second, i + 1);
+    }
+
+    return 0;
+}
 ```
 
 <a id="secant-input"></a>
 #### Secant Input
 
 ```
-Input here
+2
+1 0 -4
+-3 -1 1 3
 ```
 
 <a id="secant-output"></a>
 #### Secant Output
 
 ```
-Output here
+The polynomial function is: f(x) = 1x^2 -4
+
+Initial guess pairs: (-3, -1), (1, 3)
+
+Root 1:
+The root is: -1.99987
+Iteration needed: 4
+
+Root 2:
+The root is: 1.99995
+Iteration needed: 4
 ```
 
 ---
@@ -261,21 +714,197 @@ Theory Here
 #### Gauss Elimination Code
 
 ```cpp
-Code here
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+using namespace std;
+
+ofstream fout("output.txt");
+
+void printMatrix(double a[][20], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= n; j++) {
+            fout << setw(10) << fixed << setprecision(4) << a[i][j] << " ";
+        }
+        fout << endl;
+    }
+}
+
+int main() {
+  ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    int n;
+    fin >> n;
+
+    double a[20][20], x[20];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= n; j++) {
+            fin >> a[i][j];
+        }
+    }
+
+    fout << "\nInitial Matrix:"<<endl;
+    printMatrix(a, n);
+
+    for (int i = 0; i < n - 1; i++) {
+
+        for (int k = i + 1; k < n; k++) {
+            if (fabs(a[k][i]) > fabs(a[i][i])) {
+                for (int j = 0; j <= n; j++) {
+                    swap(a[i][j], a[k][j]);
+                }
+                fout << "\nAfter swapping row " << i + 1 << " and row " << k + 1 << ":"<<endl;
+                printMatrix(a, n);
+            }
+        }
+
+        if (fabs(a[i][i]) < 1e-9) continue;
+
+        for (int k = i + 1; k < n; k++) {
+            double factor = a[k][i] / a[i][i];
+            fout << "\nR" << k + 1 << " = R" << k + 1
+                 << " - (" << factor << ") * R" << i + 1 << endl;
+
+            for (int j = i; j <= n; j++) {
+                a[k][j] -= factor * a[i][j];
+            }
+            printMatrix(a, n);
+        }
+    }
+
+    fout << "\nMatrix after Forward Elimination (Upper Triangular):"<< endl;
+    printMatrix(a, n);
+
+    bool noSolution = false, infinite = false;
+
+    for (int i = 0; i < n; i++) {
+        bool allZero = true;
+        for (int j = 0; j < n; j++) {
+            if (fabs(a[i][j]) > 1e-9) {
+                allZero = false;
+                break;
+            }
+        }
+
+        if (allZero && fabs(a[i][n]) > 1e-9) {
+            noSolution = true;
+            break;
+        }
+        else if (allZero && fabs(a[i][n]) < 1e-9) {
+            infinite = true;
+        }
+    }
+
+    if (noSolution) {
+        fout << "\nThe system has No Solution (Inconsistent system)." << endl;
+        return 0;
+    }
+    else if (infinite) {
+        fout << "\nThe system has Infinite Solutions (Dependent equations)." << endl;
+        return 0;
+    }
+
+    fout << "\nBack Substitution Steps:"<< endl;
+
+    for (int i = n - 1; i >= 0; i--) {
+        double sum = a[i][n];
+        fout << "x" << i + 1 << " = ( " << a[i][n];
+
+        for (int j = i + 1; j < n; j++) {
+            sum -= a[i][j] * x[j];
+            fout << " - (" << a[i][j] << " * x" << j + 1 << ")";
+        }
+
+        x[i] = sum / a[i][i];
+        fout << " ) / " << a[i][i] << endl;
+        fout << "x" << i + 1 << " = " << fixed << setprecision(6) << x[i] << endl << endl;
+    }
+
+    fout << "\nUnique Solution:"<<endl;
+    for (int i = 0; i < n; i++) {
+        fout << "x" << i + 1 << " = " << fixed << setprecision(6) << x[i] << endl;
+    }
+
+    return 0;
+}
 ```
 
 <a id="gauss-elimination-input"></a>
 #### Gauss Elimination Input
 
 ```
-Input here
+3
+2 1 1 10
+3 2 3 18
+1 4 9 16
 ```
 
 <a id="gauss-elimination-output"></a>
 #### Gauss Elimination Output
 
 ```
-Output Here
+
+Initial Matrix:
+    2.0000     1.0000     1.0000    10.0000 
+    3.0000     2.0000     3.0000    18.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+After swapping row 1 and row 2:
+    3.0000     2.0000     3.0000    18.0000 
+    2.0000     1.0000     1.0000    10.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+R2 = R2 - (0.6667) * R1
+    3.0000     2.0000     3.0000    18.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+R3 = R3 - (0.3333) * R1
+    3.0000     2.0000     3.0000    18.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+    0.0000     3.3333     8.0000    10.0000 
+
+After swapping row 2 and row 3:
+    3.0000     2.0000     3.0000    18.0000 
+    0.0000     3.3333     8.0000    10.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+
+R3 = R3 - (-0.1000) * R2
+    3.0000     2.0000     3.0000    18.0000 
+    0.0000     3.3333     8.0000    10.0000 
+    0.0000     0.0000    -0.2000    -1.0000 
+
+Matrix after Forward Elimination (Upper Triangular):
+    3.0000     2.0000     3.0000    18.0000 
+    0.0000     3.3333     8.0000    10.0000 
+    0.0000     0.0000    -0.2000    -1.0000 
+
+Back Substitution Steps:
+x3 = ( -1.0000 ) / -0.2000
+x3 = 5.000000
+
+x2 = ( 10.000000 - (8.000000 * x3) ) / 3.333333
+x2 = -9.000000
+
+x1 = ( 18.000000 - (2.000000 * x2) - (3.000000 * x3) ) / 3.000000
+x1 = 7.000000
+
+
+Unique Solution:
+x1 = 7.000000
+x2 = -9.000000
+x3 = 5.000000
 ```
 
 ---
@@ -294,21 +923,191 @@ Theory Here
 #### Gauss Jordan Code
 
 ```cpp
-Cpp here
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+
+using namespace std;
+
+ofstream fout("output.txt");
+
+void printMatrix(double a[][20], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= n; j++) {
+            fout << setw(10) << fixed << setprecision(4) << a[i][j] << " ";
+        }
+        fout << endl;
+    }
+}
+
+int main() {
+
+    ifstream fin("input.txt");
+
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    int n;
+    fin >> n;
+
+    double a[20][20];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= n; j++) {
+            fin >> a[i][j];
+        }
+    }
+
+    fout << "\nInitial Matrix:"<<endl;
+    printMatrix(a, n);
+
+    for (int i = 0; i < n; i++) {
+        for (int k = i + 1; k < n; k++) {
+            if (fabs(a[k][i]) > fabs(a[i][i])) {
+                for (int j = 0; j <= n; j++) {
+                    swap(a[i][j], a[k][j]);
+                }
+                fout << "\nAfter swapping row " << i + 1 << " and row " << k + 1 << ":"<<endl;
+                printMatrix(a, n);
+            }
+        }
+
+        double pivot = a[i][i];
+        if (fabs(pivot) < 1e-9) continue;
+
+        for (int j = 0; j <= n; j++) {
+            a[i][j] /= pivot;
+        }
+        fout << "\nAfter dividing row " << i + 1 << " by pivot (" << pivot << "):"<<endl;
+        printMatrix(a, n);
+
+        for (int k = 0; k < n; k++) {
+            if (k != i) {
+                double factor = a[k][i];
+                for (int j = 0; j <= n; j++) {
+                    a[k][j] -= factor * a[i][j];
+                }
+            }
+        }
+        fout << "\nAfter eliminating column " << i + 1 << ":"<<endl;
+        printMatrix(a, n);
+    }
+
+    fout << "\nFinal Matrix (Reduced Row Echelon Form):"<<endl;
+    printMatrix(a, n);
+
+    bool noSolution = false, infinite = false;
+    for (int i = 0; i < n; i++) {
+        bool allZero = true;
+        for (int j = 0; j < n; j++) {
+            if (fabs(a[i][j]) > 1e-9) {
+                allZero = false;
+                break;
+            }
+        }
+        if (allZero && fabs(a[i][n]) > 1e-9) {
+            noSolution = true;
+            break;
+        }
+        else if (allZero && fabs(a[i][n]) < 1e-9) {
+            infinite = true;
+        }
+    }
+
+    if (noSolution) {
+        fout << "\nThe system has No Solution (Inconsistent system)." << endl;
+    }
+    else if (infinite) {
+        fout << "\nThe system has Infinite Solutions (Dependent equations)." << endl;
+    }
+    else {
+        fout << "\nThe system has a Unique Solution:"<<endl;
+        for (int i = 0; i < n; i++) {
+            fout << "x" << i + 1 << " = " << fixed << setprecision(6) << a[i][n] << endl;
+        }
+    }
+
+    return 0;
+}
 ```
 
 <a id="gauss-jordan-input"></a>
 #### Gauss Jordan Input
 
 ```
-Input Here
+3
+2 1 1 10
+3 2 3 18
+1 4 9 16
 ```
 
 <a id="gauss-jordan-output"></a>
 #### Gauss Jordan Output
 
 ```
-Output Here
+
+Initial Matrix:
+    2.0000     1.0000     1.0000    10.0000 
+    3.0000     2.0000     3.0000    18.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+After swapping row 1 and row 2:
+    3.0000     2.0000     3.0000    18.0000 
+    2.0000     1.0000     1.0000    10.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+After dividing row 1 by pivot (3.0000):
+    1.0000     0.6667     1.0000     6.0000 
+    2.0000     1.0000     1.0000    10.0000 
+    1.0000     4.0000     9.0000    16.0000 
+
+After eliminating column 1:
+    1.0000     0.6667     1.0000     6.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+    0.0000     3.3333     8.0000    10.0000 
+
+After swapping row 2 and row 3:
+    1.0000     0.6667     1.0000     6.0000 
+    0.0000     3.3333     8.0000    10.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+
+After dividing row 2 by pivot (3.3333):
+    1.0000     0.6667     1.0000     6.0000 
+    0.0000     1.0000     2.4000     3.0000 
+    0.0000    -0.3333    -1.0000    -2.0000 
+
+After eliminating column 2:
+    1.0000     0.0000    -0.6000     4.0000 
+    0.0000     1.0000     2.4000     3.0000 
+    0.0000     0.0000    -0.2000    -1.0000 
+
+After dividing row 3 by pivot (-0.2000):
+    1.0000     0.0000    -0.6000     4.0000 
+    0.0000     1.0000     2.4000     3.0000 
+   -0.0000    -0.0000     1.0000     5.0000 
+
+After eliminating column 3:
+    1.0000     0.0000     0.0000     7.0000 
+    0.0000     1.0000     0.0000    -9.0000 
+   -0.0000    -0.0000     1.0000     5.0000 
+
+Final Matrix (Reduced Row Echelon Form):
+    1.0000     0.0000     0.0000     7.0000 
+    0.0000     1.0000     0.0000    -9.0000 
+   -0.0000    -0.0000     1.0000     5.0000 
+
+The system has a Unique Solution:
+x1 = 7.000000
+x2 = -9.000000
+x3 = 5.000000
 ```
 
 ---
@@ -327,21 +1126,279 @@ Theory Here
 #### LU Decomposition Code
 
 ```cpp
-Cpp here
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+using namespace std;
+
+ofstream fout("output.txt");
+void printMatrix(double M[][20], int n, const string &name)
+{
+  fout << "\nMatrix " << name << ":"<<endl;
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < n; j++)
+      fout << setw(10) << fixed << setprecision(4) << M[i][j] << " ";
+    fout << endl;
+  }
+}
+
+int main()
+{
+  ifstream fin("input.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    int n;
+    fin >> n;
+  double A[20][20], L[20][20] = {0}, U[20][20] = {0}, b[20], y[20] = {0}, x[20] = {0};
+
+  for (int i = 0; i <= n; i++)
+    for (int j = 0; j <= n; j++)
+      fin >> A[i][j];
+
+  for (int i = 0; i < n; i++)
+     b[i] = A[i][n];
+
+  for (int i = 0; i < n; i++)
+    L[i][i] = 1;
+
+  for (int i = 0; i < n; i++)
+  {
+    for (int k = i; k < n; k++)
+    {
+      double sum = 0;
+      for (int j = 0; j < i; j++)
+        sum += L[i][j] * U[j][k];
+      U[i][k] = A[i][k] - sum;
+      fout << "\nAfter Computing U[" << i + 1 << "][" << k + 1 << "]" << ":";
+      printMatrix(L, n, "L");
+      printMatrix(U, n, "U");
+    }
+
+    for (int k = i + 1; k < n; k++)
+    {
+      double sum = 0;
+      for (int j = 0; j < i; j++)
+        sum += L[k][j] * U[j][i];
+      L[k][i] = (A[k][i] - sum) / U[i][i];
+      fout << "\nAfter Computing L[" << k + 1 << "][" << i + 1 << "]" << ":";
+      printMatrix(L, n, "L");
+      printMatrix(U, n, "U");
+    }
+  }
+
+  fout << "\nFinal L and U matrices:";
+  printMatrix(L, n, "L");
+  printMatrix(U, n, "U");
+
+  bool singular = false;
+  for (int i = 0; i < n; i++)
+  {
+    if (fabs(U[i][i]) < 1e-9)
+      singular = true;
+  }
+
+  fout << "\nForward Substitution (Ly = b)"<<endl;
+  for (int i = 0; i < n; i++)
+  {
+    double sum = 0;
+    for (int j = 0; j < i; j++)
+      sum += L[i][j] * y[j];
+    y[i] = b[i] - sum;
+    fout << "y" << i + 1 << " = " << fixed << setprecision(6) << y[i] << endl;
+  }
+
+  bool noSolution = false, infiniteSolution = false;
+
+  for (int i = 0; i < n; i++)
+  {
+    bool rowZero = true;
+    for (int j = 0; j < n; j++)
+    {
+      if (fabs(U[i][j]) > 1e-9)
+      {
+        rowZero = false;
+        break;
+      }
+    }
+
+    if (rowZero && fabs(y[i]) > 1e-9)
+      noSolution = true;
+    else if (rowZero && fabs(y[i]) < 1e-9)
+      infiniteSolution = true;
+  }
+
+  if (noSolution)
+  {
+    fout << "\nThe system has No Solution."<<endl;
+    return 0;
+  }
+  if (infiniteSolution)
+  {
+    fout << "\nThe system has Infinite Solutions."<<endl;
+    return 0;
+  }
+
+  fout << "\nBackward Substitution (Ux = y)"<<endl;
+  for (int i = n - 1; i >= 0; i--)
+  {
+    double sum = 0;
+    for (int j = i + 1; j < n; j++)
+      sum += U[i][j] * x[j];
+    x[i] = (y[i] - sum) / U[i][i];
+    fout << "x" << i + 1 << " = " << fixed << setprecision(6) << x[i] << endl;
+  }
+
+  fout << "\nThe system has a Unique Solution."<<endl;
+  return 0;
+}
 ```
 
 <a id="lu-decomposition-input"></a>
 #### LU Decomposition Input
 
 ```
-Input here
+3
+1 5 1 14
+2 1 3 13
+3 1 4 17
 ```
 
 <a id="lu-decomposition-output"></a>
 #### LU Decomposition Output
 
 ```
-Output here
+
+After Computing U[1][1]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    0.0000     1.0000     0.0000 
+    0.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing U[1][2]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    0.0000     1.0000     0.0000 
+    0.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     0.0000 
+    0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing U[1][3]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    0.0000     1.0000     0.0000 
+    0.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing L[2][1]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    0.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing L[3][1]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing U[2][2]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000    -9.0000     0.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing U[2][3]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     0.0000     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000    -9.0000     1.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing L[3][2]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     1.5556     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000    -9.0000     1.0000 
+    0.0000     0.0000     0.0000 
+
+After Computing U[3][3]:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     1.5556     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000    -9.0000     1.0000 
+    0.0000     0.0000    -0.5556 
+
+Final L and U matrices:
+Matrix L:
+    1.0000     0.0000     0.0000 
+    2.0000     1.0000     0.0000 
+    3.0000     1.5556     1.0000 
+
+Matrix U:
+    1.0000     5.0000     1.0000 
+    0.0000    -9.0000     1.0000 
+    0.0000     0.0000    -0.5556 
+
+Forward Substitution (Ly = b)
+y1 = 14.000000
+y2 = -15.000000
+y3 = -1.666667
+
+Backward Substitution (Ux = y)
+x3 = 3.000000
+x2 = 2.000000
+x1 = 1.000000
+
+The system has a Unique Solution.
 ```
 
 ---
@@ -360,21 +1417,199 @@ Theory Here
 #### Matrix Inversion Code
 
 ```cpp
-Cpp here
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+const double EPS = 1e-9;
+
+double determinant(vector<vector<double>> A) {
+    int n = A.size();
+    double det = 1;
+    for (int i = 0; i < n; i++) {
+        int pivot = i;
+        for (int r = i; r < n; r++)
+            if (fabs(A[r][i]) > fabs(A[pivot][i])) pivot = r;
+
+        if (fabs(A[pivot][i]) < EPS) return 0;
+
+        if (i != pivot) swap(A[i], A[pivot]), det *= -1;
+
+        det *= A[i][i];
+
+        double div = A[i][i];
+        for (int j = i; j < n; j++) A[i][j] /= div;
+
+        for (int r = i + 1; r < n; r++) {
+            double factor = A[r][i];
+            for (int c = i; c < n; c++)
+                A[r][c] -= factor * A[i][c];
+        }
+    }
+    return det;
+}
+
+void getCofactor(const vector<vector<double>>& A, vector<vector<double>>& temp, int p, int q) {
+    int n = A.size();
+    int row = 0, col = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (i != p && j != q) {
+                temp[row][col++] = A[i][j];
+                if (col == n - 1) col = 0, row++;
+            }
+}
+
+vector<vector<double>> adjoint(const vector<vector<double>>& A) {
+    int n = A.size();
+    vector<vector<double>> adj(n, vector<double>(n));
+
+    if (n == 1) {
+        adj[0][0] = 1;
+        return adj;
+    }
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++) {
+            vector<vector<double>> temp(n - 1, vector<double>(n - 1));
+            getCofactor(A, temp, i, j);
+            double sign = ((i + j) % 2 == 0) ? 1 : -1;
+            adj[j][i] = sign * determinant(temp);
+        }
+
+    return adj;
+}
+
+int rankMatrix(vector<vector<double>> A) {
+    int n = A.size(), m = A[0].size();
+    int rank = 0;
+
+    for (int col = 0, row = 0; col < m && row < n; col++) {
+        int sel = row;
+        for (int i = row; i < n; i++)
+            if (fabs(A[i][col]) > fabs(A[sel][col])) sel = i;
+
+        if (fabs(A[sel][col]) < EPS) continue;
+
+        swap(A[sel], A[row]);
+
+        for (int j = col + 1; j < m; j++)
+            A[row][j] /= A[row][col];
+        A[row][col] = 1;
+
+        for (int i = 0; i < n; i++)
+            if (i != row) {
+                double factor = A[i][col];
+                for (int j = col; j < m; j++)
+                    A[i][j] -= factor * A[row][j];
+            }
+
+        row++;
+        rank++;
+    }
+    return rank;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin) {
+        fout << "Error: Cannot open input.txt"<<endl;
+        return 1;
+    }
+    if (!fout) {
+        fout << "Error: Cannot open output.txt"<<endl;
+        return 1;
+    }
+
+    int n;
+    fin >> n;
+
+    vector<vector<double>> aug(n, vector<double>(n + 1));
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j <= n; j++)
+            fin >> aug[i][j];
+
+    vector<vector<double>> A(n, vector<double>(n));
+    vector<double> b(n);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) A[i][j] = aug[i][j];
+        b[i] = aug[i][n];
+    }
+
+    double det = determinant(A);
+    fout << "\nDeterminant = " << det << endl;
+
+    if (fabs(det) > EPS) {
+        fout << "\nUnique solution exists."<<endl;
+
+        vector<vector<double>> adj = adjoint(A);
+        vector<vector<double>> inv(n, vector<double>(n));
+
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                inv[i][j] = adj[i][j] / det;
+
+        fout << "\nInverse Matrix:"<<endl;
+        for (auto &row : inv) {
+            for (auto &v : row) fout << setw(10) << v << " ";
+            fout << endl;
+        }
+
+        vector<double> x(n, 0);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                x[i] += inv[i][j] * b[j];
+
+        fout << "\nSolution:"<<endl;
+        for (double v : x) fout << v << " ";
+        fout << endl;
+    }
+    else {
+        int rankA = rankMatrix(A);
+        int rankAug = rankMatrix(aug);
+
+        if (rankA == rankAug)
+            fout << "\nInfinite solutions exist."<<endl;
+        else
+            fout << "\nNo solution exists."<<endl;
+    }
+
+    return 0;
+}
 ```
 
 <a id="matrix-inversion-input"></a>
 #### Matrix Inversion Input
 
 ```
-Input here
+3
+1 1 1 6
+3 3 4 20
+2 1 3 13
 ```
 
 <a id="matrix-inversion-output"></a>
 #### Matrix Inversion Output
 
 ```
-Output here
+
+Determinant = 1
+
+Unique solution exists.
+
+Inverse Matrix:
+         5         -2          1 
+        -1          1         -1 
+        -3          1          0 
+
+Solution:
+3 1 2 
 ```
 
 ---
@@ -396,21 +1631,92 @@ Theory Here
 #### Runge-Kutta Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+// Differential equation: dy/dx = x^2 - y
+double f(double x, double y) {
+    return x*x - y;
+}
+
+double rungeKutta(double x0, double y0, double h, double x) {
+    int n = (x - x0) / h;
+    double k1, k2, k3, k4;
+
+    for (int i = 0; i < n; i++) {
+        k1 = h * f(x0, y0);
+        k2 = h * f(x0 + h/2, y0 + k1/2);
+        k3 = h * f(x0 + h/2, y0 + k2/2);
+        k4 = h * f(x0 + h, y0 + k3);
+
+        y0 = y0 + (k1 + 2*k2 + 2*k3 + k4) / 6;
+        x0 = x0 + h;
+    }
+
+    return y0;
+}
+
+int main() {
+    ifstream inFile("input.txt");
+    ofstream outFile("output.txt");
+
+    if (!inFile) {
+        cout << "Error: Could not open Input.txt" << endl;
+        return 1;
+    }
+    int T;
+    inFile >> T;
+     for (int tc = 1; tc <= T; tc++) {
+
+    double x0, y0, h, x;
+
+    inFile >> x0 >> y0 >> h >> x;
+
+    double result = rungeKutta(x0, y0, h, x);
+
+    cout << fixed << setprecision(4);
+    cout << "Result of y at x = " << x << "is : " << result << endl;
+
+    outFile << fixed << setprecision(4);
+    outFile << "Result of y at x = " << x << "is : " << result << endl;
+     }
+
+    inFile.close();
+    outFile.close();
+
+    return 0;
+}
 ```
 
 <a id="runge-kutta-input"></a>
 #### Runge-Kutta Input
 
 ```
-Input here
+3
+
+0
+1
+0.1
+0.5
+
+1
+2
+0.05
+1.5
+
+2
+3
+0.1
+2.5
 ```
 
 <a id="runge-kutta-output"></a>
 #### Runge-Kutta Output
 
 ```
-Output Here
+Result of y at x = 0.500000is : 0.689680
+Result of y at x = 1.500000is : 1.840128
+Result of y at x = 2.500000is : 3.630321
 ```
 
 ---
@@ -432,21 +1738,107 @@ Theory Here
 #### Newton Forward Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+int factorial(int n)
+{
+    int f = 1;
+    for (int i = 2; i <= n; i++)
+        f *= i;
+    return f;
+}
+
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open()) {
+        cout << "Error: Could not open input file.\n";
+        return 0;
+    }
+
+    if (!fout.is_open()) {
+        cout << "Error: Could not open output file.\n";
+        return 0;
+    }
+
+    
+    int n;
+    fin >> n;
+
+    float x[n], y[n][n];
+
+    
+    for (int i = 0; i < n; i++) {
+        fin >> x[i] >> y[i][0];
+    }
+
+    
+    float value;
+    fin >> value;
+
+   
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < n - i; j++)
+            y[j][i] = y[j + 1][i - 1] - y[j][i - 1];
+    }
+
+    
+    fout << "Forward Difference Table:" << endl << endl;
+    for (int i = 0; i < n; i++) {
+        fout << setw(8) << x[i] << "\t";
+        for (int j = 0; j < n - i; j++)
+            fout << setw(10) << y[i][j] << "\t";
+        fout << endl;
+    }
+
+    
+    float sum = y[0][0];
+    float u = (value - x[0]) / (x[1] - x[0]);
+    
+    float u_term = u;
+    for (int i = 1; i < n; i++) {
+        sum = sum + (u_term * y[0][i]) / factorial(i);
+        u_term = u_term * (u - i);
+    }
+
+    fout << "\nInterpolated value at X = " << value << " is Y = " << sum << endl;
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="newton-forward-input"></a>
 #### Newton Forward Input
 
 ```
-Input here
+5
+1891 46
+1901 66
+1911 81
+1921 93
+1931 101
+1895
 ```
 
 <a id="newton-forward-output"></a>
 #### Newton Forward Output
 
 ```
-Output here
+Forward Difference Table:
+
+    1891	        46	        20	        -5	         2	        -3	
+    1901	        66	        15	        -3	        -1	
+    1911	        81	        12	        -4	
+    1921	        93	         8	
+    1931	       101	
+
+Interpolated value at X = 1895 is Y = 54.8528
 ```
 
 ---
@@ -465,21 +1857,103 @@ Theory here
 #### Newton Backward Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+int factorial(int n)
+{
+    int f = 1;
+    for (int i = 2; i <= n; i++)
+        f = f * i;
+    return f;
+}
+
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open()) {
+        cout << "Error: Could not open input file.\n";
+        return 0;
+    }
+
+    if (!fout.is_open()) {
+        cout << "Error: Could not open output file.\n";
+        return 0;
+    }
+
+
+    int n;
+    fin >> n;
+
+    float x[n], y[n][n];
+
+    for (int i = 0; i < n; i++) {
+        fin >> x[i] >> y[i][0];
+    }
+
+    double value;
+    fin >> value;
+    
+    for (int i = 1; i < n; i++) {
+        for (int j = n - 1; j >= i; j--)
+            y[j][i] = y[j][i - 1] - y[j - 1][i - 1];
+    }
+
+    fout << "Backward Difference Table:" << endl << endl;
+
+    for (int i = 0; i < n; i++) {
+        fout << setw(8) << x[i] << "\t";
+        for (int j = 0; j <= i; j++)
+            fout << setw(10) << y[i][j] << "\t";
+        fout << endl;
+    }
+
+    double sum = y[n - 1][0];
+    double v = (value - x[n - 1]) / (x[1] - x[0]);
+    
+    double v_term = v;
+    for (int i = 1; i < n; i++) {
+        sum = sum + (v_term * y[n - 1][i]) / factorial(i);
+        v_term = v_term * (v + i);
+    }
+
+    fout << "\nInterpolated value at X = " << value << " is Y = " << sum << endl;
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="newton-backward-input"></a>
 #### Newton Backward Input
 
 ```
-Input here
+5
+1891 46
+1901 66
+1911 81
+1921 93
+1931 101
+1925
 ```
 
 <a id="newton-backward-output"></a>
 #### Newton Backward Output
 
 ```
-Output here
+Forward Difference Table:
+
+    1891	        46	        20	        -5	         2	        -3	
+    1901	        66	        15	        -3	        -1	
+    1911	        81	        12	        -4	
+    1921	        93	         8	
+    1931	       101	
+
+Interpolated value at X = 1895 is Y = 54.8528
 ```
 
 ---
@@ -498,21 +1972,93 @@ Theory here
 #### Newton Divided Difference Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open()) {
+        cout << "Error: Could not open input file.\n";
+        return 0;
+    }
+
+    if (!fout.is_open()) {
+        cout << "Error: Could not open output file.\n";
+        return 0;
+    }
+
+    int n;
+    fin >> n;
+
+    float x[n], y[n][n];
+
+    for (int i = 0; i < n; i++) {
+        fin >> x[i] >> y[i][0];
+    }
+
+    float value;
+    fin >> value;
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < n - i; j++) {
+            y[j][i] = (y[j + 1][i - 1] - y[j][i - 1]) / (x[j + i] - x[j]);
+        }
+    }
+
+    fout << "Divided Difference Table:" << endl << endl;
+    for (int i = 0; i < n; i++) {
+        fout << setw(8) << x[i] << "\t";
+        for (int j = 0; j < n - i; j++)
+            fout << setw(10) << y[i][j] << "\t";
+        fout << endl;
+    }
+
+    float sum = y[0][0];
+    float product = 1;
+    
+    for (int i = 1; i < n; i++) {
+        product = product * (value - x[i - 1]);
+        sum = sum + (product * y[0][i]);
+    }
+
+    fout << "\nInterpolated value at X = " << value << " is Y = " << sum << endl;
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="newton-divided-difference-input"></a>
 #### Newton Divided Difference Input
 
 ```
-Input here
+5
+1891 46
+1901 66
+1911 81
+1921 93
+1931 101
+1895
 ```
 
 <a id="newton-divided-difference-output"></a>
 #### Newton Divided Difference Output
 
 ```
-Output here
+Divided Difference Table:
+
+    1891	        46	         2	    -0.025	0.000333333	 -1.25e-05	
+    1901	        66	       1.5	    -0.015	-0.000166667	
+    1911	        81	       1.2	     -0.02	
+    1921	        93	       0.8	
+    1931	       101	
+
+Interpolated value at X = 1895 is Y = 54.8528
 ```
 
 ---
@@ -534,21 +2080,87 @@ Theory here
 #### Differentiation Forward Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open()) {
+        cout << "Error: Could not open input file.\n";
+        return 0;
+    }
+
+    if (!fout.is_open()) {
+        cout << "Error: Could not open output file.\n";
+        return 0;
+    }
+
+    int n;
+    fin >> n;
+
+    float x[n], y[n][n];
+
+    for (int i = 0; i < n; i++) {
+        fin >> x[i] >> y[i][0];
+    }
+
+    float value;
+    fin >> value;
+
+    float h = x[1] - x[0];
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < n - i; j++)
+            y[j][i] = y[j + 1][i - 1] - y[j][i - 1];
+    }
+
+    int i = 0;
+    float u = (value - x[i]) / h;
+    
+    float derivative = y[i][1] / h;
+
+    if (n >= 3) {
+        derivative += ((2 * u - 1) / 2.0) * (y[i][2] / h);
+    }
+
+    if (n >= 4) {
+        derivative += ((3 * u * u - 6 * u + 2) / 6.0) * (y[i][3] / h);
+    }
+
+    if (n >= 5) {
+        derivative += ((4 * u * u * u - 18 * u * u + 22 * u - 6) / 24.0) * (y[i][4] / h);
+    }
+
+    fout << "\nAt x = " << value << ", Derivative = " << derivative << endl;
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="differentiation-forward-input"></a>
 #### Differentiation Forward Input
 
 ```
-Input here
+5
+0 1
+1 2.7183
+2 7.3891
+3 20.0855
+4 54.5982
+1.2
 ```
 
 <a id="differentiation-forward-output"></a>
 #### Differentiation Forward Output
 
 ```
-Output here
+At x = 1.2, Derivative = 3.54662
 ```
 
 ---
@@ -567,21 +2179,87 @@ Theory here
 #### Differentiation Backward Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open()) {
+        cout << "Error: Could not open input file.\n";
+        return 0;
+    }
+
+    if (!fout.is_open()) {
+        cout << "Error: Could not open output file.\n";
+        return 0;
+    }
+
+    int n;
+    fin >> n;
+
+    float x[n], y[n][n];
+
+    for (int i = 0; i < n; i++) {
+        fin >> x[i] >> y[i][0];
+    }
+
+    float value;
+    fin >> value;
+
+    float h = x[1] - x[0];
+
+    for (int i = 1; i < n; i++) {
+        for (int j = n - 1; j >= i; j--)
+            y[j][i] = y[j][i - 1] - y[j - 1][i - 1];
+    }
+
+    int i = n - 1;
+    float v = (value - x[i]) / h;
+
+    float derivative = y[i][1] / h;
+    
+    if (n >= 3) {
+        derivative += ((2 * v + 1) / 2.0) * (y[i][2] / h);
+    }
+    
+    if (n >= 4) {
+        derivative += ((3 * v * v + 6 * v + 2) / 6.0) * (y[i][3] / h);
+    }
+    
+    if (n >= 5) {
+        derivative += ((4 * v * v * v + 18 * v * v + 22 * v + 6) / 24.0) * (y[i][4] / h);
+    }
+
+    fout << "\nAt x = " << value << ", Derivative = " << derivative << endl;
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="differentiation-backward-input"></a>
 #### Differentiation Backward Input
 
 ```
-Input here
+5
+0 1
+1 2.7183
+2 7.3891
+3 20.0855
+4 54.5982
+3.4
 ```
 
 <a id="differentiation-backward-output"></a>
 #### Differentiation Backward Output
 
 ```
-Output here
+At x = 3.4, Derivative = 30.5605
 ```
 
 ---
@@ -753,21 +2431,157 @@ Theory here
 #### Polynomial Regression Code
 
 ```cpp
-Cpp here
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<double> gaussianElimination(vector<vector<double>>& mat, vector<double>& y) {
+    int n = mat.size();
+    for(int i = 0; i < n; i++) {
+        int maxRow = i;
+        for(int k = i+1; k < n; k++)
+            if(fabs(mat[k][i]) > fabs(mat[maxRow][i])) maxRow = k;
+        swap(mat[i], mat[maxRow]);
+        swap(y[i], y[maxRow]);
+
+        for(int k = i+1; k < n; k++) {
+            double factor = mat[k][i]/mat[i][i];
+            for(int j = i; j < n; j++)
+                mat[k][j] -= factor*mat[i][j];
+            y[k] -= factor*y[i];
+        }
+    }
+
+    vector<double> x(n);
+    for(int i = n-1; i >= 0; i--) {
+        x[i] = y[i];
+        for(int j = i+1; j < n; j++)
+            x[i] -= mat[i][j]*x[j];
+        x[i] /= mat[i][i];
+    }
+    return x;
+}
+
+vector<double> polynomialRegression(const vector<double>& x,
+                                    const vector<double>& y,
+                                    int degree) {
+    int n = x.size();
+    int d = degree;
+
+    vector<vector<double>> X(n, vector<double>(d+1));
+    for(int i = 0; i < n; i++) {
+        X[i][0] = 1.0;
+        for(int k = 1; k <= d; k++)
+            X[i][k] = pow(x[i], k);
+    }
+
+    vector<vector<double>> XtX(d+1, vector<double>(d+1,0.0));
+    vector<double> Xty(d+1,0.0);
+
+    for(int i = 0; i <= d; i++) {
+        for(int j = 0; j <= d; j++)
+            for(int k = 0; k < n; k++)
+                XtX[i][j] += X[k][i]*X[k][j];
+
+        for(int k = 0; k < n; k++)
+            Xty[i] += X[k][i]*y[k];
+    }
+
+    return gaussianElimination(XtX, Xty);
+}
+
+double predictPolynomial(const vector<double>& coeff, double x) {
+    double y = 0, term = 1;
+    for(double a : coeff) {
+        y += a*term;
+        term *= x;
+    }
+    return y;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if(!fin.is_open() || !fout.is_open()) {
+        cout << "Error opening file\n";
+        return 0;
+    }
+
+    int testCases;
+    fin >> testCases;
+
+    for(int t = 1; t <= testCases; t++) {
+        int n, degree;
+        fin >> n >> degree;
+
+        vector<double> x(n), y(n);
+        for(int i = 0; i < n; i++) fin >> x[i] >> y[i];
+
+        double xInput;
+        fin >> xInput;
+
+        vector<double> coeff = polynomialRegression(x, y, degree);
+        double yPred = predictPolynomial(coeff, xInput);
+
+        stringstream ss;
+        ss << fixed << setprecision(4);
+        ss << "Test Case " << t << ":\n";
+        ss << "Polynomial Degree: " << degree << "\n";
+        ss << "Function: y = ";
+        for(int i = 0; i <= degree; i++) {
+            if(i > 0) ss << " + ";
+            ss << coeff[i];
+            if(i > 0) ss << "*x^" << i;
+        }
+        ss << "\nPredicted y for x = " << xInput << ": " << yPred << "\n\n";
+
+        string output = ss.str();
+        cout << output;
+        fout << output;
+    }
+
+    fin.close();
+    fout.close();
+    return 0;
+}
 ```
 
 <a id="polynomial-regression-input"></a>
 #### Polynomial Regression Input
 
 ```
-Input here
+2
+
+5 2
+1 1
+2 4
+3 9
+4 16
+5 25
+6
+
+4 3
+1 1
+2 8
+3 27
+4 64
+5
 ```
 
 <a id="polynomial-regression-output"></a>
 #### Polynomial Regression Output
 
 ```
-Output here
+Test Case 1:
+Polynomial Degree: 2
+Function: y = 0.0000 + -0.0000*x^1 + 1.0000*x^2
+Predicted y for x = 6.0000: 36.0000
+
+Test Case 2:
+Polynomial Degree: 3
+Function: y = 0.0000 + -0.0000*x^1 + 0.0000*x^2 + 1.0000*x^3
+Predicted y for x = 5.0000: 125.0000
 ```
 
 ---
@@ -786,21 +2600,152 @@ Theory here
 #### Transcendental Regression Code
 
 ```cpp
-Cpp here
+#include<bits/stdc++.h>
+using namespace std;
+
+double predictExponential(double a, double b, double x) { return a * exp(b * x); }
+double predictLogarithmic(double a, double b, double x) { return a + b * log(x); }
+double predictPower(double a, double b, double x) { return a * pow(x, b); }
+
+pair<double,double> exponentialRegression(const vector<double>& x, const vector<double>& y) {
+    double sumX=0, sumY=0, sumXY=0, sumXX=0;
+    int n = x.size();
+    for(int i=0;i<n;i++) {
+        double Y = log(y[i]);
+        sumX += x[i]; sumY += Y; sumXY += x[i]*Y; sumXX += x[i]*x[i];
+    }
+    double b = (n*sumXY - sumX*sumY) / (n*sumXX - sumX*sumX);
+    double a = exp((sumY - b*sumX)/n);
+    return {a,b};
+}
+
+pair<double,double> logarithmicRegression(const vector<double>& x, const vector<double>& y) {
+    double sumLnX=0, sumY=0, sumLnX_Y=0, sumLnX2=0;
+    int n = x.size();
+    for(int i=0;i<n;i++) {
+        double L = log(x[i]);
+        sumLnX += L; sumY += y[i]; sumLnX_Y += L*y[i]; sumLnX2 += L*L;
+    }
+    double b = (n*sumLnX_Y - sumLnX*sumY) / (n*sumLnX2 - sumLnX*sumLnX);
+    double a = (sumY - b*sumLnX)/n;
+    return {a,b};
+}
+
+pair<double,double> powerLawRegression(const vector<double>& x, const vector<double>& y) {
+    double sumLnX=0, sumLnY=0, sumLnX_LnY=0, sumLnX2=0;
+    int n = x.size();
+    for(int i=0;i<n;i++) {
+        double LX = log(x[i]); double LY = log(y[i]);
+        sumLnX += LX; sumLnY += LY; sumLnX_LnY += LX*LY; sumLnX2 += LX*LX;
+    }
+    double b = (n*sumLnX_LnY - sumLnX*sumLnY) / (n*sumLnX2 - sumLnX*sumLnX);
+    double a = exp((sumLnY - b*sumLnX)/n);
+    return {a,b};
+}
+
+double computePrediction(int type, const vector<double>& x, const vector<double>& y, double xInput, double &a, double &b) {
+    if(type == 1) {
+        auto res = exponentialRegression(x,y);
+        a = res.first; b = res.second;
+        return predictExponential(a,b,xInput);
+    } else if(type == 2) {
+        auto res = logarithmicRegression(x,y);
+        a = res.first; b = res.second;
+        return predictLogarithmic(a,b,xInput);
+    } else if(type == 3) {
+        auto res = powerLawRegression(x,y);
+        a = res.first; b = res.second;
+        return predictPower(a,b,xInput);
+    }
+    return 0;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if(!fin.is_open() || !fout.is_open()) return 0;
+
+    int testCases;
+    fin >> testCases;
+
+    for(int t=0;t<testCases;t++) {
+        int type, n;
+        fin >> type >> n;
+
+        if(type < 1 || type > 3) {
+            for(int i=0;i<2*n+1;i++) { double temp; fin >> temp; }
+            continue;
+        }
+
+        vector<double> x(n), y(n);
+        for(int i=0;i<n;i++) fin >> x[i];
+        for(int i=0;i<n;i++) fin >> y[i];
+
+        double xInput;
+        fin >> xInput;
+
+        double a=0, b=0;
+        double yPred = computePrediction(type, x, y, xInput, a, b);
+
+
+        string funcStr;
+        if(type == 1) funcStr = "y = " + to_string(a) + " * e^(" + to_string(b) + " * x)";
+        else if(type == 2) funcStr = "y = " + to_string(a) + " + " + to_string(b) + " * ln(x)";
+        else funcStr = "y = " + to_string(a) + " * x^" + to_string(b);
+
+        string typeName = (type==1 ? "Exponential Regression" : type==2 ? "Logarithmic Regression" : "Power-law Regression");
+
+        string output = "Test Case " + to_string(t+1) + ":\n" + typeName + "\nFunction: " + funcStr + "\nPredicted y for x=" + to_string(xInput) + ": " + to_string(yPred) + "\n\n";
+
+
+        cout << output;
+        fout << output;
+    }
+
+    fin.close();
+    fout.close();
+    return 0;
+}
 ```
 
 <a id="transcendental-regression-input"></a>
 #### Transcendental Regression Input
 
 ```
-Input here
+3
+1 5
+1 2 3 4 5
+2.718 7.389 20.086 54.598 148.413
+6
+2 4
+1 2 3 4
+0 0.6931 1.0986 1.3863
+5
+3 4
+1 2 3 4
+2 4 9 16
+5
 ```
 
 <a id="transcendental-regression-output"></a>
 #### Transcendental Regression Output
 
 ```
-TOutput here
+Test Case 1:
+Exponential Regression
+Function: y = 0.999919 * e^(1.000021 * x)
+Predicted y for x=6.000000: 403.446792
+
+Test Case 2:
+Logarithmic Regression
+Function: y = -0.000017 + 1.000004 * ln(x)
+Predicted y for x=5.000000: 1.609428
+
+Test Case 3:
+Power-law Regression
+Function: y = 1.780428 * x^1.492058
+Predicted y for x=5.000000: 19.652962
 ```
 
 ---
@@ -822,21 +2767,100 @@ Theory here
 #### Simpson 1/3 Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+double f(double x) {
+    return x*x + 2*x + 1;
+}
+
+double simpson13(double a, double b, int n) {
+    if (n % 2 != 0) return -1;
+
+    double h = (b - a) / n;
+    double sum = f(a) + f(b);
+
+    for (int i = 1; i < n; i++) {
+        double x = a + i*h;
+        if (i % 2 == 0)
+            sum += 2 * f(x);
+        else
+            sum += 4 * f(x);
+    }
+
+    return (h / 3) * sum;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open() || !fout.is_open()) {
+        cout << "Error opening file.\n";
+        return 0;
+    }
+
+    int testCases;
+    fin >> testCases;
+
+    for (int t = 1; t <= testCases; t++) {
+        double a, b;
+        int n;
+
+        fin >> a >> b >> n;
+
+        double result = simpson13(a, b, n);
+
+        cout << fixed << setprecision(3);
+        fout << fixed << setprecision(3);
+
+        fout << "Test Case " << t << ":\n";
+        cout << "Test Case " << t << ":\n";
+
+        if (result == -1)
+        {
+            fout << "Error: Number of intervals (n) must be even.\n\n";
+            cout << "Error: Number of intervals (n) must be even.\n\n";
+
+        }
+
+        else
+        {
+            fout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+            cout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+
+        }
+
+
+    }
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="simpson-13-input"></a>
 #### Simpson 1/3 Input
 
 ```
-Input Here
+2
+
+0 2 4
+
+1 3 6
 ```
 
 <a id="simpson-13-output"></a>
 #### Simpson 1/3 Output
 
 ```
-Output here
+Test Case 1:
+Approximate integral from 0.000 to 2.000 is = 8.667
+
+Test Case 2:
+Approximate integral from 1.000 to 3.000 is = 18.667
 ```
 
 ---
@@ -855,21 +2879,151 @@ Theory Here
 #### Simpson 3/8 Code
 
 ```cpp
-Cpp here
+#include <bits/stdc++.h>
+using namespace std;
+
+double f(double x) {
+    return x*x + 2*x + 1;
+}
+
+double simpson38(double a, double b, int n) {
+    if (n % 3 != 0) return -1;
+
+    double h = (b - a) / n;
+    double sum = f(a) + f(b);
+
+    for (int i = 1; i < n; i++) {
+        double x = a + i*h;
+        if (i % 3 == 0)
+            sum += 2 * f(x);
+        else
+            sum += 3 * f(x);
+    }
+
+    return (3.0 * h / 8.0) * sum;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open() || !fout.is_open()) {
+        cout << "Error opening file.\n";
+        return 0;
+    }
+
+    int testCases;
+    fin >> testCases;
+
+    for (int t = 1; t <= testCases; t++) {
+        double a, b;
+        int n;
+
+        fin >> a >> b >> n;
+
+        double result = simpson38(a, b, n);
+
+        cout << fixed << setprecision(3);
+        fout << fixed << setprecision(3);
+
+        fout << "Test Case " << t << ":\n";
+        cout << "Test Case " << t << ":\n";
+
+        if (result == -1) {
+            fout << "Error: Number of intervals (n) must be a multiple of 3.\n\n";
+            cout << "Error: Number of intervals (n) must be a multiple of 3.\n\n";
+        } else {
+            fout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+            cout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+        }
+    }
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="simpson-38-input"></a>
 #### Simpson 3/8 Input
 
 ```
-Input here
+#include <bits/stdc++.h>
+using namespace std;
+
+double f(double x) {
+    return x*x + 2*x + 1;
+}
+
+double simpson38(double a, double b, int n) {
+    if (n % 3 != 0) return -1;
+
+    double h = (b - a) / n;
+    double sum = f(a) + f(b);
+
+    for (int i = 1; i < n; i++) {
+        double x = a + i*h;
+        if (i % 3 == 0)
+            sum += 2 * f(x);
+        else
+            sum += 3 * f(x);
+    }
+
+    return (3.0 * h / 8.0) * sum;
+}
+
+int main() {
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+
+    if (!fin.is_open() || !fout.is_open()) {
+        cout << "Error opening file.\n";
+        return 0;
+    }
+
+    int testCases;
+    fin >> testCases;
+
+    for (int t = 1; t <= testCases; t++) {
+        double a, b;
+        int n;
+
+        fin >> a >> b >> n;
+
+        double result = simpson38(a, b, n);
+
+        cout << fixed << setprecision(3);
+        fout << fixed << setprecision(3);
+
+        fout << "Test Case " << t << ":\n";
+        cout << "Test Case " << t << ":\n";
+
+        if (result == -1) {
+            fout << "Error: Number of intervals (n) must be a multiple of 3.\n\n";
+            cout << "Error: Number of intervals (n) must be a multiple of 3.\n\n";
+        } else {
+            fout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+            cout << "Approximate integral from " << a << " to " << b << " is = " << result << "\n\n";
+        }
+    }
+
+    fin.close();
+    fout.close();
+
+    return 0;
+}
 ```
 
 <a id="simpson-38-output"></a>
 #### Simpson 3/8 Output
 
 ```
-Output here
+Test Case 1:
+Error: Number of intervals (n) must be a multiple of 3.
+
+Test Case 2:
+Approximate integral from 1.000 to 3.000 is = 18.667
 ```
 
 ---
