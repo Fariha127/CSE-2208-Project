@@ -512,7 +512,37 @@ The root is: -1.76831e-14
 #### Newton-Raphson Theory
 
 ```
-Theory Here
+
+The Newton–Raphson method finds an approximate root of an equation f(x)=0 by starting with an initial guess and repeatedly improving it using the formula:
+
+xₙ₊₁ = xₙ − ( f(xₙ) / f′(xₙ) )
+
+❖ If f(x) is a real and continuously differentiable function, the Newton–Raphson method is used to find a root of the equation f(x)=0.  
+
+❖ Let the initial approximation to the root be x₀.  
+
+❖ A better approximation x₁ is obtained using the formula:  
+x₁ = x₀ − ( f(x₀) / f′(x₀) ).  
+
+❖ This process is repeated iteratively as:  
+xₙ₊₁ = xₙ − ( f(xₙ) / f′(xₙ) ).  
+
+❖ The iteration continues until the difference between two successive values of x becomes sufficiently small.
+
+Algorithm:
+
+Step 1: Find f′(xₙ).  
+
+Step 2: Choose 2 real numbers a and b such that f(a)∗f(b) < 0 and stopping criterion E.  
+If such a and b do not exist, then randomly guess a.  
+
+Step 3: Assume x₀ = a.  
+
+Step 4: Find xₙ₊₁.  
+
+Step 5: If |xₙ₊₁ − xₙ| < E, then the root is xₙ₊₁.  
+Otherwise, set xₙ = xₙ₊₁ and repeat the iteration.
+
 ```
 
 <a id="newton-raphson-code"></a>
