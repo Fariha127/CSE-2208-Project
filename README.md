@@ -2746,7 +2746,7 @@ Error: Regression cannot be computed.
 
 y = a₀ + a₁x + a₂x² + ··· + aₘxᵐ
 
-❖ The unknown constants a₀, a₁, … , aₘ are determined using the **Principle of Least Squares**, which states that the sum of the squares of the deviations between the observed and calculated values is minimum.
+❖ The unknown constants a₀, a₁, … , aₘ are determined using the Principle of Least Squares, which states that the sum of the squares of the deviations between the observed and calculated values is minimum.
 
 ❖ The normal equations obtained are:
 
