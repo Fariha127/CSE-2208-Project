@@ -1726,17 +1726,38 @@ Result of y at x = 2.500000is : 3.630321
 ## Interpolation Methods
 
 <a id="newton-forward-interpolation"></a>
-### Newton Forward Interpolation
+### Newton’s Forward Interpolation
 
 <a id="newton-forward-theory"></a>
-#### Newton Forward Theory
+#### Newton’s Forward Interpolation Theory
 
 ```
-Theory Here
+Newton’s Forward Interpolation is a numerical technique used to estimate the value of a function at a given point using equally spaced tabulated data, when the value lies near the beginning of the data table.
+
+❖ The independent variable values must be equally spaced.  
+❖ Let the given data points be  
+(x₀, y₀), (x₁, y₁), … , (xₙ, yₙ) where xᵢ = x₀ + ih.  
+❖ Forward difference operator:  
+Δyᵢ = yᵢ₊₁ − yᵢ  
+
+❖ Interpolation formula:  
+f(x) = y₀ + uΔy₀ + u(u−1)/2! Δ²y₀ + u(u−1)(u−2)/3! Δ³y₀ + …
+
+where  
+u = (x − x₀) / h
+
+## Algorithm
+Step 1: Arrange the given data in tabular form.  
+Step 2: Construct the forward difference table.  
+Step 3: Identify x₀, the first value of x, and compute h.  
+Step 4: Compute u = (x − x₀)/h.  
+Step 5: Substitute the values of u and the forward differences into the interpolation formula.  
+Step 6: Evaluate the required value of f(x).
+
 ```
 
 <a id="newton-forward-code"></a>
-#### Newton Forward Code
+#### Newton’s Forward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -1815,7 +1836,7 @@ int main()
 ```
 
 <a id="newton-forward-input"></a>
-#### Newton Forward Input
+#### Newton’s Forward Interpolation Input
 
 ```
 5
@@ -1828,7 +1849,7 @@ int main()
 ```
 
 <a id="newton-forward-output"></a>
-#### Newton Forward Output
+#### Newton’s Forward Interpolation Output
 
 ```
 Forward Difference Table:
@@ -1845,17 +1866,37 @@ Interpolated value at X = 1895 is Y = 54.8528
 ---
 
 <a id="newton-backward-interpolation"></a>
-### Newton Backward Interpolation
+### Newton's Backward Interpolation
 
 <a id="newton-backward-theory"></a>
-#### Newton Backward Theory
+#### Newton's Backward Interpolation Theory
 
 ```
-Theory here
+Newton’s Backward Interpolation is used to estimate the value of a function when the required value lies near the end of the data table.
+
+❖ The independent variable values must be equally spaced.  
+❖ Let xₙ be the last value of x.  
+❖ Backward difference operator:  
+∇yₙ = yₙ − yₙ₋₁  
+
+❖ Interpolation formula:  
+f(x) = yₙ + v∇yₙ + v(v+1)/2! ∇²yₙ + v(v+1)(v+2)/3! ∇³yₙ + …
+
+where  
+v = (x − xₙ) / h
+
+## Algorithm
+Step 1: Arrange the given data in tabular form.  
+Step 2: Construct the backward difference table.  
+Step 3: Identify xₙ and compute h.  
+Step 4: Compute v = (x − xₙ)/h.  
+Step 5: Substitute values into the backward interpolation formula.  
+Step 6: Evaluate the required value of f(x).
+
 ```
 
 <a id="newton-backward-code"></a>
-#### Newton Backward Code
+#### Newton's Backward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -1930,7 +1971,7 @@ int main()
 ```
 
 <a id="newton-backward-input"></a>
-#### Newton Backward Input
+#### Newton's Backward Interpolation Input
 
 ```
 5
@@ -1943,7 +1984,7 @@ int main()
 ```
 
 <a id="newton-backward-output"></a>
-#### Newton Backward Output
+#### Newton's Backward Interpolation Output
 
 ```
 Forward Difference Table:
@@ -1960,17 +2001,31 @@ Interpolated value at X = 1895 is Y = 54.8528
 ---
 
 <a id="newton-divided-difference-interpolation"></a>
-### Newton Divided Difference Interpolation
+### Newton’s Divided Difference Interpolation
 
 <a id="newton-divided-difference-theory"></a>
-#### Newton Divided Difference Theory
+#### Newton’s Divided Difference Theory
 
 ```
-Theory here
+Newton’s Divided Difference Interpolation is used to estimate function values when the data points are not equally spaced.
+
+❖ First divided difference:  
+f[xᵢ, xⱼ] = (f(xⱼ) − f(xᵢ)) / (xⱼ − xᵢ)
+
+❖ Interpolation polynomial:  
+f(x) = f(x₀) + (x − x₀)f[x₀, x₁] + (x − x₀)(x − x₁)f[x₀, x₁, x₂] + …
+
+## Algorithm
+Step 1: Arrange the data points in ascending order of x.  
+Step 2: Construct the divided difference table.  
+Step 3: Select the required divided differences.  
+Step 4: Substitute values into the divided difference polynomial.  
+Step 5: Evaluate f(x) at the desired point.
+
 ```
 
 <a id="newton-divided-difference-code"></a>
-#### Newton Divided Difference Code
+#### Newton’s Divided Difference Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2035,7 +2090,7 @@ int main()
 ```
 
 <a id="newton-divided-difference-input"></a>
-#### Newton Divided Difference Input
+#### Newton’s Divided Difference Input
 
 ```
 5
@@ -2048,7 +2103,7 @@ int main()
 ```
 
 <a id="newton-divided-difference-output"></a>
-#### Newton Divided Difference Output
+#### Newton’s Divided Difference Output
 
 ```
 Divided Difference Table:
@@ -2071,14 +2126,32 @@ Interpolated value at X = 1895 is Y = 54.8528
 ### Differentiation by Forward Interpolation
 
 <a id="differentiation-forward-theory"></a>
-#### Differentiation Forward Theory
+#### Differentiation by Forward Interpolation Theory
 
 ```
-Theory here
+Newton’s Forward Differentiation is used to approximate the derivative of a function using equally spaced tabulated data, when the point of differentiation lies near the beginning of the data table.
+
+❖ The independent variable values must be equally spaced.  
+❖ Forward differences are used.  
+❖ Let h be the common interval and  
+u = (x − x₀) / h  
+
+❖ The first derivative obtained from Newton’s forward interpolation polynomial is:
+
+(dy/dx) = [ Δy₀ + (2u − 1)/2 · Δ²y₀ + (3u² − 6u + 2)/6 · Δ³y₀ + (4u³ − 18u² + 22u − 6)/24 · Δ⁴y₀ + … ] / h
+
+## Algorithm
+Step 1: Arrange the given data in tabular form.  
+Step 2: Construct the forward difference table.  
+Step 3: Identify the initial value x₀ and compute the step size h.  
+Step 4: Compute u = (x − x₀)/h.  
+Step 5: Substitute u and the forward differences into the differentiation formula.  
+Step 6: Evaluate the approximate value of dy/dx.
+
 ```
 
 <a id="differentiation-forward-code"></a>
-#### Differentiation Forward Code
+#### Differentiation by Forward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2170,14 +2243,32 @@ At x = 1.2, Derivative = 3.54662
 ### Differentiation by Backward Interpolation
 
 <a id="differentiation-backward-theory"></a>
-#### Differentiation Backward Theory
+#### Differentiation by Backward Interpolation Theory
 
 ```
-Theory here
+Newton’s Backward Differentiation is used to approximate the derivative of a function using equally spaced tabulated data, when the point of differentiation lies near the end of the data table.
+
+❖ The independent variable values must be equally spaced.  
+❖ Backward differences are used.  
+❖ Let h be the common interval and  
+v = (x − xₙ) / h  
+
+❖ The first derivative obtained from Newton’s backward interpolation polynomial is:
+
+(dy/dx) = [ ∇yₙ + (2v + 1)/2 · ∇²yₙ + (3v² + 6v + 2)/6 · ∇³yₙ + (4v³ + 18v² + 22v + 6)/24 · ∇⁴yₙ + … ] / h
+
+## Algorithm
+Step 1: Arrange the given data in tabular form.  
+Step 2: Construct the backward difference table.  
+Step 3: Identify the final value xₙ and compute the step size h.  
+Step 4: Compute v = (x − xₙ)/h.  
+Step 5: Substitute v and the backward differences into the differentiation formula.  
+Step 6: Evaluate the approximate value of dy/dx.
+
 ```
 
 <a id="differentiation-backward-code"></a>
-#### Differentiation Backward Code
+#### Differentiation by Backward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2244,7 +2335,7 @@ int main()
 ```
 
 <a id="differentiation-backward-input"></a>
-#### Differentiation Backward Input
+#### Differentiation by Backward Interpolation Input
 
 ```
 5
@@ -2257,7 +2348,7 @@ int main()
 ```
 
 <a id="differentiation-backward-output"></a>
-#### Differentiation Backward Output
+#### Differentiation by Backward Interpolation Output
 
 ```
 At x = 3.4, Derivative = 30.5605
