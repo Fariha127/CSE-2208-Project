@@ -2945,7 +2945,38 @@ Predicted y for x = 5.0000: 125.0000
 #### Transcendental Regression Theory
 
 ```
-Theory here
+❖ Transcendental regression is a numerical method used to fit data to equations involving transcendental functions such as exponential, logarithmic, or power functions.
+
+❖ The data is assumed to follow a transcendental relationship such as:
+- y = aeᵇˣ  
+- y = axᵇ  
+- y = a + b ln x
+
+❖ The given transcendental equation is transformed into a linear form by taking logarithms.
+
+❖ After transformation, the Principle of Least Squares is applied to determine the constants.
+
+❖ The normal equations are formed for the transformed linear equation, involving terms such as Σx, Σx², Σy, Σxy, etc.
+
+❖ Solving the equations gives the constants of the original transcendental equation.
+
+
+Algorithm:
+
+Step 1: Arrange the given data points (x, y) in tabular form.  
+
+Step 2: Assume a suitable transcendental equation.  
+
+Step 3: Convert the equation into a linear form using logarithms.  
+
+Step 4: Compute the required transformed values and summations such as Σx, Σx², Σy, Σxy.  
+
+Step 5: Apply the least squares method to form normal equations.  
+
+Step 6: Solve the equations to find the constants.  
+
+Step 7: Write the required transcendental curve.
+
 ```
 
 <a id="transcendental-regression-code"></a>
