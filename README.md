@@ -50,17 +50,17 @@
     - [Output](#runge-kutta-output)
 
 - [Interpolation Methods](#interpolation-methods)
-  - [Newton Forward Interpolation](#newton-forward-interpolation)
+  - [Newton's Forward Interpolation](#newton-forward-interpolation)
     - [Theory](#newton-forward-theory)
     - [Code](#newton-forward-code)
     - [Input](#newton-forward-input)
     - [Output](#newton-forward-output)
-  - [Newton Backward Interpolation](#newton-backward-interpolation)
+  - [Newton's Backward Interpolation](#newton-backward-interpolation)
     - [Theory](#newton-backward-theory)
     - [Code](#newton-backward-code)
     - [Input](#newton-backward-input)
     - [Output](#newton-backward-output)
-  - [Newton Divided Difference Interpolation](#newton-divided-difference-interpolation)
+  - [Newton's Divided Difference Interpolation](#newton-divided-difference-interpolation)
     - [Theory](#newton-divided-difference-theory)
     - [Code](#newton-divided-difference-code)
     - [Input](#newton-divided-difference-input)
@@ -1746,15 +1746,19 @@ f(x) = y₀ + uΔy₀ + u(u−1)/2! Δ²y₀ + u(u−1)(u−2)/3! Δ³y₀ + …
 where  
 u = (x − x₀) / h
 
-## Algorithm
+```
+
+##### Algorithm
+```
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
 Step 3: Identify x₀, the first value of x, and compute h.  
 Step 4: Compute u = (x − x₀)/h.  
 Step 5: Substitute the values of u and the forward differences into the interpolation formula.  
 Step 6: Evaluate the required value of f(x).
-
 ```
+
+
 
 <a id="newton-forward-code"></a>
 #### Newton’s Forward Interpolation Code
@@ -1870,7 +1874,6 @@ Interpolated value at X = 1895 is Y = 54.8528
 
 <a id="newton-backward-theory"></a>
 #### Newton's Backward Interpolation Theory
-
 ```
 Newton’s Backward Interpolation is used to estimate the value of a function when the required value lies near the end of the data table.
 
@@ -1884,8 +1887,9 @@ f(x) = yₙ + v∇yₙ + v(v+1)/2! ∇²yₙ + v(v+1)(v+2)/3! ∇³yₙ + …
 
 where  
 v = (x − xₙ) / h
-
-## Algorithm
+```
+##### Algorithm: '=
+```
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the backward difference table.  
 Step 3: Identify xₙ and compute h.  
@@ -2014,8 +2018,10 @@ f[xᵢ, xⱼ] = (f(xⱼ) − f(xᵢ)) / (xⱼ − xᵢ)
 
 ❖ Interpolation polynomial:  
 f(x) = f(x₀) + (x − x₀)f[x₀, x₁] + (x − x₀)(x − x₁)f[x₀, x₁, x₂] + …
+```
 
-## Algorithm
+##### Algorithm
+```
 Step 1: Arrange the data points in ascending order of x.  
 Step 2: Construct the divided difference table.  
 Step 3: Select the required divided differences.  
@@ -2139,8 +2145,10 @@ u = (x − x₀) / h
 ❖ The first derivative obtained from Newton’s forward interpolation polynomial is:
 
 (dy/dx) = [ Δy₀ + (2u − 1)/2 · Δ²y₀ + (3u² − 6u + 2)/6 · Δ³y₀ + (4u³ − 18u² + 22u − 6)/24 · Δ⁴y₀ + … ] / h
+```
 
-## Algorithm
+##### Algorithm
+```
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
 Step 3: Identify the initial value x₀ and compute the step size h.  
@@ -2256,8 +2264,9 @@ v = (x − xₙ) / h
 ❖ The first derivative obtained from Newton’s backward interpolation polynomial is:
 
 (dy/dx) = [ ∇yₙ + (2v + 1)/2 · ∇²yₙ + (3v² + 6v + 2)/6 · ∇³yₙ + (4v³ + 18v² + 22v + 6)/24 · ∇⁴yₙ + … ] / h
-
-## Algorithm
+```
+##### Algorithm
+```
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the backward difference table.  
 Step 3: Identify the final value xₙ and compute the step size h.  
