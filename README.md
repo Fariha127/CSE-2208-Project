@@ -1006,7 +1006,27 @@ x3 = 5.000000
 #### Gauss-Jordan Theory
 
 ```
-Theory Here
+
+The Gauss–Jordan elimination method is a numerical technique used to solve a system 
+of linear equations by transforming the augmented matrix into a reduced row echelon 
+form (identity matrix) using elementary row operations.  
+
+Algorithm:
+
+Step 1: Take the given system of linear equations and write it in matrix form: AX=B  
+
+Step 2: Form the augmented matrix [A|B].  
+
+Step 3: Use elementary row operations to make the leading diagonal elements equal 
+to 1.  
+
+Step 4: Use row operations to make all other elements in each column zero, both above 
+and below the leading diagonal.  
+
+Step 5: Continue the process until the coefficient matrix becomes an identity matrix.  
+
+Step 6: Read the solution directly from the augmented matrix.
+
 ```
 
 <a id="gauss-jordan-code"></a>
