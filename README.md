@@ -1464,8 +1464,44 @@ The system has a Unique Solution.
 <a id="matrix-inversion-theory"></a>
 #### Matrix Inversion Theory
 
-```
-Theory Here
+``` 
+
+The LU decomposition method is a numerical technique used to solve a system of 
+linear equations by factorizing a square matrix A into the product of a lower triangular 
+matrix L and an upper triangular matrix U, such that A=LU. 
+
+Algorithm: 
+
+Step 1: Take the given system of linear equations and write it in matrix form: AX=B  
+
+Step 2: Form the coefficient matrix A.  
+
+Step 3: Decompose matrix A into: A=LU  
+
+where  
+
+●​ L is a lower triangular matrix with diagonal elements equal to 1  
+
+●​ U is an upper triangular matrix​  
+
+Step 4: Compute:  
+
+First row of U : u11 ,u12,u13  
+
+First column of L : l21 ,l32  
+
+Second row of U : u22,u23  
+
+Second column of L : l23  
+
+Third row of U : u33  
+
+Step 5: After finding matrices L and U, solve: LY=B by forward substitution.  
+
+Step 6: Solve: UX=Y by backward substitution.Obtain the solution vector XXX.  
+
+Step 7: Obtain the solution vector X.
+
 ```
 
 <a id="matrix-inversion-code"></a>
