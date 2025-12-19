@@ -313,8 +313,43 @@ The root is: -0.003125
 <a id="false-position-theory"></a>
 #### False Position Theory
 
-```
-Theory here
+``` 
+
+The false position method (Regular Falsi method in Latin) finds the root of a non-linear 
+equation f(x)=0 by repeatedly approximating the root using a straight line joining the 
+points (a,f(a)) and (b,f(b)), where f(a) and f(b) have opposite signs. The point where this 
+line intersects the x-axis gives a better approximation of the root. 
+
+❖ If a function f(x) is real and continuous in the interval a<x<b, and f(a) and f(b) are of 
+opposite sign, that is, f(a)f(b)<0, then there is at least one real root in the interval 
+between a and b. 
+
+❖ Let x1=a and x2=b. Define x0 to be the midpoint between a and b, that is,  
+
+x0 = x1 - f(x1)*(x2-x1)/(f(x2)-f(x1)). 
+
+❖ Now there exist the following 3 conditions:​
+(i) If f(x0)=0, then the root is x0​
+(ii) If f(x0)⋅f(x1)<0, then the root is between x0 and x1 
+​(iii) If f(x0)⋅f(x2)<0, then the root is between x0 and x2 
+
+Algorithm:
+
+Step 1: Choose 2 real numbers x1 and x2 such that f(x1)∗f(x2)<0 and stopping criterion 
+E.  
+
+Step 2: Define root x0 = x1 - f(x1)*(x2-x1)/(f(x2)-f(x1)).  
+
+Step 3: Find f(x0)  
+
+Step 4: If f(x0)=0, then the root is x0 → Stop.  
+
+If f(x0)∗f(x1)<0, then x2=x0  
+
+If f(x0)∗f(x2)<0, then x1=x0  
+
+Return to Step 2 until finding abs(x2−x1)/x2 < E.
+
 ```
 
 <a id="false-position-code"></a>
