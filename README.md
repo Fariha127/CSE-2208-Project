@@ -573,7 +573,29 @@ Iteration needed: 4
 #### Secant Theory
 
 ```
-Theory here
+The Secant Method is a numerical technique used to find the root of a non-linear equation
+f(x) = 0 by repeatedly approximating the root using a straight line passing through two
+points on the curve.
+
+❖ Unlike the Bisection and False Position methods, the Secant Method does not require
+f(x₀) and f(x₁) to have opposite signs.
+
+❖ Let x₀ and x₁ be two initial approximations of the root.
+
+❖ The next approximation x₂ is obtained by:
+
+x₂ = x₁ − f(x₁)(x₁ − x₀) / [f(x₁) − f(x₀)]
+
+❖ The process is repeated until the desired accuracy is achieved.
+
+Algorithm:
+Step 1: Choose two initial approximations x₀ and x₁.  
+Step 2: Evaluate f(x₀) and f(x₁).  
+Step 3: Compute the next approximation using the secant formula.  
+Step 4: Replace x₀ by x₁ and x₁ by the new approximation.  
+Step 5: Repeat Steps 2–4 until |x₁ − x₀| is less than the prescribed tolerance.  
+Step 6: The final value of x₁ is taken as the approximate root.
+
 ```
 
 <a id="secant-code"></a>
@@ -1746,7 +1768,7 @@ f(x) = y₀ + uΔy₀ + u(u−1)/2! Δ²y₀ + u(u−1)(u−2)/3! Δ³y₀ + …
 where  
 u = (x − x₀) / h
 
-Algorithm
+Algorithm:
 
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
@@ -2018,7 +2040,7 @@ f[xᵢ, xⱼ] = (f(xⱼ) − f(xᵢ)) / (xⱼ − xᵢ)
 f(x) = f(x₀) + (x − x₀)f[x₀, x₁] + (x − x₀)(x − x₁)f[x₀, x₁, x₂] + …
 
 
-Algorithm
+Algorithm:
 
 Step 1: Arrange the data points in ascending order of x.  
 Step 2: Construct the divided difference table.  
@@ -2143,7 +2165,7 @@ u = (x − x₀) / h
 
 (dy/dx) = [ Δy₀ + (2u − 1)/2 · Δ²y₀ + (3u² − 6u + 2)/6 · Δ³y₀ + (4u³ − 18u² + 22u − 6)/24 · Δ⁴y₀ + … ] / h
 
-Algorithm
+Algorithm:
 
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
@@ -2261,7 +2283,7 @@ v = (x − xₙ) / h
 
 (dy/dx) = [ ∇yₙ + (2v + 1)/2 · ∇²yₙ + (3v² + 6v + 2)/6 · ∇³yₙ + (4v³ + 18v² + 22v + 6)/24 · ∇⁴yₙ + … ] / h
 
-Algorithm
+Algorithm:
 
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the backward difference table.  
@@ -2371,7 +2393,38 @@ At x = 3.4, Derivative = 30.5605
 #### Linear Regression Theory
 
 ```
-Theory here
+Curve fitting is a numerical method used to determine a mathematical relationship that
+best represents a given set of experimental data points.
+
+❖ In linear regression, the data is assumed to follow a straight-line relationship of
+the form:
+
+y = a + bx
+
+❖ The constants a and b are determined using the Principle of Least Squares, which states
+that the sum of the squares of the deviations between the observed and calculated values
+is minimum.
+
+❖ The normal equations obtained are:
+
+Σy = na + bΣx  
+Σxy = aΣx + bΣx²
+
+❖ Solving the above equations gives the explicit expressions for a and b:
+
+b = [ nΣxy − (Σx)(Σy) ] / [ nΣx² − (Σx)² ]  
+a = ( Σy − bΣx ) / n
+
+❖ Substituting the values of a and b gives the best-fit straight line.
+
+Algorithm:
+Step 1: Arrange the given data points (x, y) in tabular form.  
+Step 2: Compute x² and xy for each data point.  
+Step 3: Calculate Σx, Σy, Σx², and Σxy.  
+Step 4: Form the normal equations.  
+Step 5: Solve the equations to determine a and b.  
+Step 6: Write the equation of the best-fit straight line y = a + bx.
+
 ```
 
 <a id="linear-regression-code"></a>
@@ -2857,7 +2910,31 @@ Predicted y for x=5.000000: 19.652962
 #### Simpson 1/3 Theory
 
 ```
-Theory here
+Simpson’s 1/3 Rule is a numerical integration technique used to approximate the definite
+integral of a function f(x) over a finite interval by fitting a parabola through three
+consecutive data points.
+
+❖ If the function f(x) is continuous over the interval a ≤ x ≤ b, then the definite
+integral ∫ₐᵇ f(x) dx can be approximated using Simpson’s 1/3 Rule.
+
+❖ The interval [a, b] is divided into an even number of subintervals of equal width h, where  
+h = (b − a)/n.
+
+❖ Let the ordinates be  
+y₀ = f(x₀), y₁ = f(x₁), y₂ = f(x₂), … , yₙ = f(xₙ).
+
+❖ The formula is:
+
+∫ₐᵇ f(x) dx = (h/3) [ y₀ + yₙ + 4(y₁ + y₃ + … + yₙ₋₁) + 2(y₂ + y₄ + … + yₙ₋₂) ]
+
+Algorithm:
+Step 1: Choose the limits of integration a and b.  
+Step 2: Divide the interval [a, b] into an even number of subintervals n.  
+Step 3: Compute the step size h = (b − a)/n.  
+Step 4: Calculate the function values y₀, y₁, … , yₙ.  
+Step 5: Substitute the values into Simpson’s 1/3 formula.  
+Step 6: Evaluate the approximate value of the integral.
+
 ```
 
 <a id="simpson-13-code"></a>
@@ -2969,7 +3046,29 @@ Approximate integral from 1.000 to 3.000 is = 18.667
 #### Simpson 3/8 Theory
 
 ```
-Theory Here
+Simpson’s 3/8 Rule is a numerical integration method used to approximate definite integrals
+by fitting a cubic polynomial through four consecutive data points.
+
+❖ If the function f(x) is continuous over the interval a ≤ x ≤ b, then the definite
+integral ∫ₐᵇ f(x) dx can be approximated using Simpson’s 3/8 Rule.
+
+❖ The interval [a, b] is divided into several equal subintervals such that the total
+number of subintervals is a multiple of 3.
+
+❖ Let h = (b − a)/n be the common interval width.
+
+❖ The formula is:
+
+∫ₐᵇ f(x) dx = (3h/8) [ y₀ + yₙ + 3(y₁ + y₂ + y₄ + y₅ + …) + 2(y₃ + y₆ + …) ]
+
+Algorithm:
+Step 1: Choose the limits of integration a and b.  
+Step 2: Divide the interval [a, b] into n subintervals where n is a multiple of 3.  
+Step 3: Compute the step size h = (b − a)/n.  
+Step 4: Calculate the function values y₀, y₁, … , yₙ.  
+Step 5: Substitute the values into Simpson’s 3/8 formula.  
+Step 6: Evaluate the approximate value of the integral.
+
 ```
 
 <a id="simpson-38-code"></a>
