@@ -1812,7 +1812,33 @@ Solution:
 #### Runge-Kutta Theory
 
 ```
-Theory Here
+Runge–Kutta 4th Order (RK4) Method is a numerical technique used to solve first-order ordinary differential equations of the form : dy/dx = f(x, y) , when the initial condition y(x₀) = y₀ is known. In this implementation, the method is applied to the differential equation
+dy/dx = x² − y
+❖ The differential equation is defined as a function f(x, y).
+ ❖ Initial values x₀ and y₀ are provided through an input file.
+ ❖ A fixed step size h is used for numerical computation.
+ ❖ The number of iterations is calculated using  n = (x − x₀) / h
+RK4 formula used in the program:
+At each step, four intermediate values are calculated as follows:
+k₁ = h · f(x₀, y₀)
+ k₂ = h · f(x₀ + h/2, y₀ + k₁/2)
+ k₃ = h · f(x₀ + h/2, y₀ + k₂/2)
+ k₄ = h · f(x₀ + h, y₀ + k₃)
+The next value of y is obtained using
+y₀ = y₀ + (k₁ + 2k₂ + 2k₃ + k₄) / 6
+and the value of x is updated as
+x₀ = x₀ + h
+Algorithm:
+Step 1: Read the number of test cases from the input file.
+ Step 2: For each test case, read x₀, y₀, step size h, and the required value of x.
+ Step 3: Define the differential equation in the function f(x, y).
+ Step 4: Compute the total number of iterations using n = (x − x₀) / h.
+ Step 5: Use a loop to calculate k₁, k₂, k₃, and k₄ at each step.
+ Step 6: Update the value of y using the RK4 formula.
+ Step 7: Increment x by the step size h.
+ Step 8: Repeat the process until x reaches the required value.
+ Step 9: Display and store the final value of y at the given x.
+
 ```
 
 <a id="runge-kutta-code"></a>
