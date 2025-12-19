@@ -797,7 +797,29 @@ Iteration needed: 4
 #### Gauss Elimination Theory
 
 ```
-Theory Here
+The Gauss Elimination method solves a system of linear equations by systematically 
+eliminating variables to convert the coefficient matrix into an upper triangular form, 
+and then finding the solution using backward substitution. 
+
+Algorithm:
+
+Step 1: Take the given system of linear equations and write it in matrix form: AX=B  
+
+Step 2: Form the augmented matrix [A|B].  
+
+Step 3: Use elementary row operations to eliminate the unknowns below the main 
+diagonal and convert the augmented matrix into an upper triangular form.  
+
+Step 4: Continue the elimination process until all elements below the main diagonal 
+become zero.  
+
+Step 5: After obtaining the upper triangular matrix, solve the resulting system using 
+backward substitution.  
+
+Step 6: Compute the values of the unknown variables.  
+
+Step 7: Obtain the solution vector X.
+
 ```
 
 <a id="gauss-elimination-code"></a>
