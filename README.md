@@ -1464,41 +1464,26 @@ The system has a Unique Solution.
 <a id="matrix-inversion-theory"></a>
 #### Matrix Inversion Theory
 
-``` 
+```  
 
-The LU decomposition method is a numerical technique used to solve a system of 
-linear equations by factorizing a square matrix A into the product of a lower triangular 
-matrix L and an upper triangular matrix U, such that A=LU. 
+The matrix inversion method solves a system of linear equations AX=B by finding the 
+inverse of the coefficient matrix A. If A is non-singular (det⁡(A)≠0), the solution is 
+obtained as: X=(A^-1)B 
 
-Algorithm: 
+Algorithm:
 
-Step 1: Take the given system of linear equations and write it in matrix form: AX=B  
+Step 1: Take the given system of linear equations and write it in matrix form: AX=B.  
 
-Step 2: Form the coefficient matrix A.  
+Step 2: Form the coefficient matrix A and the constant matrix B.  
 
-Step 3: Decompose matrix A into: A=LU  
+Step 3: Check whether matrix A is invertible (i.e., det⁡(A)≠0).  
 
-where  
+Step 4: Find the inverse of matrix A, denoted by (A^-1), using any suitable method (adjoint  
+method or elementary row operations).  
 
-●​ L is a lower triangular matrix with diagonal elements equal to 1  
+Step 5: Multiply both sides of the equation AX=B by  (A^-1): X=(A^-1)B.  
 
-●​ U is an upper triangular matrix​  
-
-Step 4: Compute:  
-
-First row of U : u11 ,u12,u13  
-
-First column of L : l21 ,l32  
-
-Second row of U : u22,u23  
-
-Second column of L : l23  
-
-Third row of U : u33  
-
-Step 5: After finding matrices L and U, solve: LY=B by forward substitution.  
-
-Step 6: Solve: UX=Y by backward substitution.Obtain the solution vector XXX.  
+Step 6: Perform the matrix multiplication (A^-1)B.  
 
 Step 7: Obtain the solution vector X.
 
