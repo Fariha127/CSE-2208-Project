@@ -9,7 +9,7 @@
     - [Code](#false-position-code)
     - [Input](#false-position-input)
     - [Output](#false-position-output)
-  - [Newton Raphson Method](#newton-raphson-method)
+  - [Newton-Raphson Method](#newton-raphson-method)
     - [Theory](#newton-raphson-theory)
     - [Code](#newton-raphson-code)
     - [Input](#newton-raphson-input)
@@ -26,7 +26,7 @@
     - [Code](#gauss-elimination-code)
     - [Input](#gauss-elimination-input)
     - [Output](#gauss-elimination-output)
-  - [Gauss Jordan Elimination Method](#gauss-jordan-elimination-method)
+  - [Gauss-Jordan Elimination Method](#gauss-jordan-elimination-method)
     - [Theory](#gauss-jordan-theory)
     - [Code](#gauss-jordan-code)
     - [Input](#gauss-jordan-input)
@@ -439,17 +439,17 @@ The root is: -1.76831e-14
 ---
 
 <a id="newton-raphson-method"></a>
-### Newton Raphson Method
+### Newton-Raphson Method
 
 <a id="newton-raphson-theory"></a>
-#### Newton Raphson Theory
+#### Newton-Raphson Theory
 
 ```
 Theory Here
 ```
 
 <a id="newton-raphson-code"></a>
-#### Newton Raphson Code
+#### Newton-Raphson Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -541,7 +541,7 @@ int main()
 ```
 
 <a id="newton-raphson-input"></a>
-#### Newton Raphson Input
+#### Newton-Raphson Input
 
 ```
 2
@@ -550,7 +550,7 @@ int main()
 ```
 
 <a id="newton-raphson-output"></a>
-#### Newton Raphson Output
+#### Newton-Raphson Output
 
 ```
 The polynomial function is: f(x) = 1x^2 -4
@@ -911,17 +911,17 @@ x3 = 5.000000
 ---
 
 <a id="gauss-jordan-elimination-method"></a>
-### Gauss Jordan Elimination Method
+### Gauss-Jordan Elimination Method
 
 <a id="gauss-jordan-theory"></a>
-#### Gauss Jordan Theory
+#### Gauss-Jordan Theory
 
 ```
 Theory Here
 ```
 
 <a id="gauss-jordan-code"></a>
-#### Gauss Jordan Code
+#### Gauss-Jordan Code
 
 ```cpp
 #include <iostream>
@@ -1041,7 +1041,7 @@ int main() {
 ```
 
 <a id="gauss-jordan-input"></a>
-#### Gauss Jordan Input
+#### Gauss-Jordan Input
 
 ```
 3
@@ -1051,7 +1051,7 @@ int main() {
 ```
 
 <a id="gauss-jordan-output"></a>
-#### Gauss Jordan Output
+#### Gauss-Jordan Output
 
 ```
 
@@ -1746,10 +1746,8 @@ f(x) = y₀ + uΔy₀ + u(u−1)/2! Δ²y₀ + u(u−1)(u−2)/3! Δ³y₀ + …
 where  
 u = (x − x₀) / h
 
-```
+Algorithm
 
-##### Algorithm
-```
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
 Step 3: Identify x₀, the first value of x, and compute h.  
@@ -1887,9 +1885,9 @@ f(x) = yₙ + v∇yₙ + v(v+1)/2! ∇²yₙ + v(v+1)(v+2)/3! ∇³yₙ + …
 
 where  
 v = (x − xₙ) / h
-```
-##### Algorithm: '=
-```
+
+Algorithm: 
+
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the backward difference table.  
 Step 3: Identify xₙ and compute h.  
@@ -2018,10 +2016,10 @@ f[xᵢ, xⱼ] = (f(xⱼ) − f(xᵢ)) / (xⱼ − xᵢ)
 
 ❖ Interpolation polynomial:  
 f(x) = f(x₀) + (x − x₀)f[x₀, x₁] + (x − x₀)(x − x₁)f[x₀, x₁, x₂] + …
-```
 
-##### Algorithm
-```
+
+Algorithm
+
 Step 1: Arrange the data points in ascending order of x.  
 Step 2: Construct the divided difference table.  
 Step 3: Select the required divided differences.  
@@ -2029,7 +2027,6 @@ Step 4: Substitute values into the divided difference polynomial.
 Step 5: Evaluate f(x) at the desired point.
 
 ```
-
 <a id="newton-divided-difference-code"></a>
 #### Newton’s Divided Difference Code
 
@@ -2145,10 +2142,9 @@ u = (x − x₀) / h
 ❖ The first derivative obtained from Newton’s forward interpolation polynomial is:
 
 (dy/dx) = [ Δy₀ + (2u − 1)/2 · Δ²y₀ + (3u² − 6u + 2)/6 · Δ³y₀ + (4u³ − 18u² + 22u − 6)/24 · Δ⁴y₀ + … ] / h
-```
 
-##### Algorithm
-```
+Algorithm
+
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the forward difference table.  
 Step 3: Identify the initial value x₀ and compute the step size h.  
@@ -2264,9 +2260,9 @@ v = (x − xₙ) / h
 ❖ The first derivative obtained from Newton’s backward interpolation polynomial is:
 
 (dy/dx) = [ ∇yₙ + (2v + 1)/2 · ∇²yₙ + (3v² + 6v + 2)/6 · ∇³yₙ + (4v³ + 18v² + 22v + 6)/24 · ∇⁴yₙ + … ] / h
-```
-##### Algorithm
-```
+
+Algorithm
+
 Step 1: Arrange the given data in tabular form.  
 Step 2: Construct the backward difference table.  
 Step 3: Identify the final value xₙ and compute the step size h.  
