@@ -2739,7 +2739,44 @@ Error: Regression cannot be computed.
 #### Polynomial Regression Theory
 
 ```
-Theory here
+❖ Polynomial regression is a numerical method used to fit a curve of degree m to a given set of experimental data points.
+
+❖ The data is assumed to follow a polynomial relationship of the form:
+\[
+y = a_0 + a_1 x + a_2 x^2 + \cdots + a_m x^m
+\]
+
+❖ The unknown constants \( a_0, a_1, \dots, a_m \) are determined using the **Principle of Least Squares**, which states that the sum of the squares of the deviations between the observed and calculated values is minimum.
+
+❖ The normal equations obtained are:
+\[
+\sum y = na_0 + a_1 \sum x + a_2 \sum x^2 + \cdots + a_m \sum x^m
+\]
+\[
+\sum xy = a_0 \sum x + a_1 \sum x^2 + a_2 \sum x^3 + \cdots + a_m \sum x^{m+1}
+\]
+\[
+\vdots
+\]
+\[
+\sum x^m y = a_0 \sum x^m + a_1 \sum x^{m+1} + \cdots + a_m \sum x^{2m}
+\]
+
+❖ Solving these equations gives the values of the constants.
+
+❖ Substituting these constants gives the best-fit polynomial curve.
+
+---
+
+Algorithm: 
+
+Step 1: Arrange the given data points \((x, y)\) in tabular form.  
+Step 2: Compute the required powers of \( x \) and products \( x^k y \).  
+Step 3: Calculate the required summations.  
+Step 4: Form the normal equations.  
+Step 5: Solve the system of equations to determine the constants.  
+Step 6: Write the equation of the best-fit polynomial.
+
 ```
 
 <a id="polynomial-regression-code"></a>
