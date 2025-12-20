@@ -3383,6 +3383,8 @@ Test Case 2:
 Approximate integral from 1.000 to 3.000 is = 18.667
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="simpsons-38-rule"></a>
