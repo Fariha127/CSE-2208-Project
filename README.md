@@ -110,7 +110,7 @@
 
 ---
 
-<a id="course-contents"</a>
+<a id="course-contents"></a>
 ## Course Contents
 ```
 Solution of Non-linear Equations: Bi-section method, Secant method, False position method, Newton-Raphson
