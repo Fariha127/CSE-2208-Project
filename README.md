@@ -1,122 +1,142 @@
-- [Solution of Non-Linear Equations](#solution-of-non-linear-equations)
-  - [Bisection Method](#bisection-method)
-    - [Theory](#bisection-theory)
-    - [Code](#bisection-code)
-    - [Input](#bisection-input)
-    - [Output](#bisection-output)
-  - [False Position Method](#false-position-method)
-    - [Theory](#false-position-theory)
-    - [Code](#false-position-code)
-    - [Input](#false-position-input)
-    - [Output](#false-position-output)
-  - [Newton-Raphson Method](#newton-raphson-method)
-    - [Theory](#newton-raphson-theory)
-    - [Code](#newton-raphson-code)
-    - [Input](#newton-raphson-input)
-    - [Output](#newton-raphson-output)
-  - [Secant Method](#secant-method)
-    - [Theory](#secant-theory)
-    - [Code](#secant-code)
-    - [Input](#secant-input)
-    - [Output](#secant-output)
+- [Course Contents](#course-contents)
+  - [Solution of Non-Linear Equations](#solution-of-non-linear-equations)
+    - [Bisection Method](#bisection-method)
+      - [Theory](#bisection-theory)
+      - [Code](#bisection-code)
+      - [Input](#bisection-input)
+      - [Output](#bisection-output)
+    - [False Position Method](#false-position-method)
+      - [Theory](#false-position-theory)
+      - [Code](#false-position-code)
+      - [Input](#false-position-input)
+      - [Output](#false-position-output)
+    - [Newton-Raphson Method](#newton-raphson-method)
+      - [Theory](#newton-raphson-theory)
+      - [Code](#newton-raphson-code)
+      - [Input](#newton-raphson-input)
+      - [Output](#newton-raphson-output)
+    - [Secant Method](#secant-method)
+      - [Theory](#secant-theory)
+      - [Code](#secant-code)
+      - [Input](#secant-input)
+      - [Output](#secant-output)
 
-- [Solution of Linear Equations](#solution-of-linear-equations)
-  - [Gauss Elimination Method](#gauss-elimination-method)
-    - [Theory](#gauss-elimination-theory)
-    - [Code](#gauss-elimination-code)
-    - [Input](#gauss-elimination-input)
-    - [Output](#gauss-elimination-output)
-  - [Gauss-Jordan Elimination Method](#gauss-jordan-elimination-method)
-    - [Theory](#gauss-jordan-theory)
-    - [Code](#gauss-jordan-code)
-    - [Input](#gauss-jordan-input)
-    - [Output](#gauss-jordan-output)
-  - [LU Decomposition Method](#lu-decomposition-method)
-    - [Theory](#lu-decomposition-theory)
-    - [Code](#lu-decomposition-code)
-    - [Input](#lu-decomposition-input)
-    - [Output](#lu-decomposition-output)
-  - [Matrix Inversion](#matrix-inversion)
-    - [Theory](#matrix-inversion-theory)
-    - [Code](#matrix-inversion-code)
-    - [Input](#matrix-inversion-input)
-    - [Output](#matrix-inversion-output)
-
-- [Differential Equation Solving](#differential-equation-solving)
-  - [Runge-Kutta 4th Order Method](#runge-kutta-4th-order-method)
-    - [Theory](#runge-kutta-theory)
-    - [Code](#runge-kutta-code)
-    - [Input](#runge-kutta-input)
-    - [Output](#runge-kutta-output)
-
-- [Interpolation Methods](#interpolation-methods)
-  - [Newton's Forward Interpolation](#newton-forward-interpolation)
-    - [Theory](#newton-forward-theory)
-    - [Code](#newton-forward-code)
-    - [Input](#newton-forward-input)
-    - [Output](#newton-forward-output)
-  - [Newton's Backward Interpolation](#newton-backward-interpolation)
-    - [Theory](#newton-backward-theory)
-    - [Code](#newton-backward-code)
-    - [Input](#newton-backward-input)
-    - [Output](#newton-backward-output)
-  - [Newton's Divided Difference Interpolation](#newton-divided-difference-interpolation)
-    - [Theory](#newton-divided-difference-theory)
-    - [Code](#newton-divided-difference-code)
-    - [Input](#newton-divided-difference-input)
-    - [Output](#newton-divided-difference-output)
-
-- [Numerical Differentiation](#numerical-differentiation)
-  - [Differentiation by Forward Interpolation](#differentiation-forward-interpolation)
-    - [Theory](#differentiation-forward-theory)
-    - [Code](#differentiation-forward-code)
-    - [Input](#differentiation-forward-input)
-    - [Output](#differentiation-forward-output)
-  - [Differentiation by Backward Interpolation](#differentiation-backward-interpolation)
-    - [Theory](#differentiation-backward-theory)
-    - [Code](#differentiation-backward-code)
-    - [Input](#differentiation-backward-input)
-    - [Output](#differentiation-backward-output)
-
-- [Curve Fitting / Regression](#curve-fitting--regression)
-  - [Linear Regression](#linear-regression)
-    - [Theory](#linear-regression-theory)
-    - [Code](#linear-regression-code)
-    - [Input](#linear-regression-input)
-    - [Output](#linear-regression-output)
-  - [Polynomial Regression](#polynomial-regression)
-    - [Theory](#polynomial-regression-theory)
-    - [Code](#polynomial-regression-code)
-    - [Input](#polynomial-regression-input)
-    - [Output](#polynomial-regression-output)
-  - [Transcendental Regression](#transcendental-regression)
-    - [Theory](#transcendental-regression-theory)
-    - [Code](#transcendental-regression-code)
-    - [Input](#transcendental-regression-input)
-    - [Output](#transcendental-regression-output)
-
-- [Numerical Integration](#numerical-integration)
-  - [Simpson's 1/3 Rule](#simpsons-13-rule)
-    - [Theory](#simpson-13-theory)
-    - [Code](#simpson-13-code)
-    - [Input](#simpson-13-input)
-    - [Output](#simpson-13-output)
-  - [Simpson's 3/8 Rule](#simpsons-38-rule)
-    - [Theory](#simpson-38-theory)
-    - [Code](#simpson-38-code)
-    - [Input](#simpson-38-input)
-    - [Output](#simpson-38-output)
+  - [Solution of Linear Equations](#solution-of-linear-equations)
+    - [Gauss Elimination Method](#gauss-elimination-method)
+      - [Theory](#gauss-elimination-theory)
+      - [Code](#gauss-elimination-code)
+      - [Input](#gauss-elimination-input)
+      - [Output](#gauss-elimination-output)
+    - [Gauss-Jordan Elimination Method](#gauss-jordan-elimination-method)
+      - [Theory](#gauss-jordan-theory)
+      - [Code](#gauss-jordan-code)
+      - [Input](#gauss-jordan-input)
+      - [Output](#gauss-jordan-output)
+    - [LU Decomposition Method](#lu-decomposition-method)
+      - [Theory](#lu-decomposition-theory)
+      - [Code](#lu-decomposition-code)
+      - [Input](#lu-decomposition-input)
+      - [Output](#lu-decomposition-output)
+    - [Matrix Inversion](#matrix-inversion)
+      - [Theory](#matrix-inversion-theory)
+      - [Code](#matrix-inversion-code)
+      - [Input](#matrix-inversion-input)
+      - [Output](#matrix-inversion-output)
+  
+  - [Differential Equation Solving](#differential-equation-solving)
+    - [Runge-Kutta 4th Order Method](#runge-kutta-4th-order-method)
+      - [Theory](#runge-kutta-theory)
+      - [Code](#runge-kutta-code)
+      - [Input](#runge-kutta-input)
+      - [Output](#runge-kutta-output)
+  
+  - [Interpolation Methods](#interpolation-methods)
+    - [Newton's Forward Interpolation](#newton-forward-interpolation)
+      - [Theory](#newton-forward-theory)
+      - [Code](#newton-forward-code)
+      - [Input](#newton-forward-input)
+      - [Output](#newton-forward-output)
+    - [Newton's Backward Interpolation](#newton-backward-interpolation)
+      - [Theory](#newton-backward-theory)
+      - [Code](#newton-backward-code)
+      - [Input](#newton-backward-input)
+      - [Output](#newton-backward-output)
+    - [Newton's Divided Difference Interpolation](#newton-divided-difference-interpolation)
+      - [Theory](#newton-divided-difference-theory)
+      - [Code](#newton-divided-difference-code)
+      - [Input](#newton-divided-difference-input)
+      - [Output](#newton-divided-difference-output)
+  
+  - [Numerical Differentiation](#numerical-differentiation)
+    - [Differentiation by Forward Interpolation](#differentiation-forward-interpolation)
+      - [Theory](#differentiation-forward-theory)
+      - [Code](#differentiation-forward-code)
+      - [Input](#differentiation-forward-input)
+      - [Output](#differentiation-forward-output)
+    - [Differentiation by Backward Interpolation](#differentiation-backward-interpolation)
+      - [Theory](#differentiation-backward-theory)
+      - [Code](#differentiation-backward-code)
+      - [Input](#differentiation-backward-input)
+      - [Output](#differentiation-backward-output)
+  
+  - [Curve Fitting / Regression](#curve-fitting--regression)
+    - [Linear Regression](#linear-regression)
+      - [Theory](#linear-regression-theory)
+      - [Code](#linear-regression-code)
+      - [Input](#linear-regression-input)
+      - [Output](#linear-regression-output)
+    - [Polynomial Regression](#polynomial-regression)
+      - [Theory](#polynomial-regression-theory)
+      - [Code](#polynomial-regression-code)
+      - [Input](#polynomial-regression-input)
+      - [Output](#polynomial-regression-output)
+    - [Transcendental Regression](#transcendental-regression)
+      - [Theory](#transcendental-regression-theory)
+      - [Code](#transcendental-regression-code)
+      - [Input](#transcendental-regression-input)
+      - [Output](#transcendental-regression-output)
+  
+  - [Numerical Integration](#numerical-integration)
+    - [Simpson's 1/3 Rule](#simpsons-13-rule)
+      - [Theory](#simpson-13-theory)
+      - [Code](#simpson-13-code)
+      - [Input](#simpson-13-input)
+      - [Output](#simpson-13-output)
+    - [Simpson's 3/8 Rule](#simpsons-38-rule)
+      - [Theory](#simpson-38-theory)
+      - [Code](#simpson-38-code)
+      - [Input](#simpson-38-input)
+      - [Output](#simpson-38-output)
 
 ---
 
+<a id="course-contents"</a>
+## Course Contents
+```
+Solution of Non-linear Equations: Bi-section method, Secant method, False position method, Newton-Raphson
+method.
+
+Solution of Linear Equations: Algorithms for Gauss elimination, Gauss-Jordan elimination method, LU-
+factorization.
+
+Interpolation and Approximation: Newton forward and backward interpolation formula with errors.
+Numerical Integration: Simpson’s rule, One-third rule, Simpson’s three-eighths rule, Trapezium rule,
+Trapezoidal rule.
+Numerical Differentiation: Differentiation based on equal-interval interpolation, Second order derivative,
+Differentiation based on Lagrange’s interpolation.
+Solution of Differential Equations: Runge–Kutta method, Matrix inversion.
+Curve Fitting: Least squares lines, Least square polynomials and Non-linear curve fitting.
+
+```
+
 <a id="solution-of-non-linear-equations"></a>
-## Solution of Non-Linear Equations
+### Solution of Non-Linear Equations
 
 <a id="bisection-method"></a>
-### Bisection Method
+#### Bisection Method
 
 <a id="bisection-theory"></a>
-#### Bisection Theory
+##### Bisection Theory
 
 ```
 The bisection method is a numerical technique used to find the root of a non-linear 
@@ -156,7 +176,7 @@ Return to Step 2 until finding abs(x2−x1)/x2 < E.
 ```
 
 <a id="bisection-code"></a>
-#### Bisection Code
+##### Bisection Code
 
 ```cpp
 #include <iostream>
@@ -277,7 +297,7 @@ int main() {
 ```
 
 <a id="bisection-input"></a>
-#### Bisection Input
+##### Bisection Input
 
 ```
 4
@@ -286,7 +306,7 @@ int main() {
 ```
 
 <a id="bisection-output"></a>
-#### Bisection Output
+##### Bisection Output
 
 ```
 The polynomial function is: f(x) = 1x^4 -3x^3 +2x^2 +6x^1 
@@ -308,10 +328,10 @@ The root is: -0.003125
 ---
 
 <a id="false-position-method"></a>
-### False Position Method
+#### False Position Method
 
 <a id="false-position-theory"></a>
-#### False Position Theory
+##### False Position Theory
 
 ``` 
 
@@ -353,7 +373,7 @@ Return to Step 2 until finding abs(x2−x1)/x2 < E.
 ```
 
 <a id="false-position-code"></a>
-#### False Position Code
+##### False Position Code
 
 ```cpp
 #include <iostream>
@@ -475,7 +495,7 @@ int main() {
 ```
 
 <a id="false-position-input"></a>
-#### False Position Input
+##### False Position Input
 
 ```
 4
@@ -484,7 +504,7 @@ int main() {
 ```
 
 <a id="false-position-output"></a>
-#### False Position Output
+##### False Position Output
 
 ```
 The polynomial function is: f(x) = 1x^4 -3x^3 +2x^2 +6x^1 
@@ -506,10 +526,10 @@ The root is: -1.76831e-14
 ---
 
 <a id="newton-raphson-method"></a>
-### Newton-Raphson Method
+#### Newton-Raphson Method
 
 <a id="newton-raphson-theory"></a>
-#### Newton-Raphson Theory
+##### Newton-Raphson Theory
 
 ```
 
@@ -546,7 +566,7 @@ Otherwise, set xₙ = xₙ₊₁ and repeat the iteration.
 ```
 
 <a id="newton-raphson-code"></a>
-#### Newton-Raphson Code
+##### Newton-Raphson Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -638,7 +658,7 @@ int main()
 ```
 
 <a id="newton-raphson-input"></a>
-#### Newton-Raphson Input
+##### Newton-Raphson Input
 
 ```
 2
@@ -647,7 +667,7 @@ int main()
 ```
 
 <a id="newton-raphson-output"></a>
-#### Newton-Raphson Output
+##### Newton-Raphson Output
 
 ```
 The polynomial function is: f(x) = 1x^2 -4
@@ -664,10 +684,10 @@ Iteration needed: 4
 ---
 
 <a id="secant-method"></a>
-### Secant Method
+#### Secant Method
 
 <a id="secant-theory"></a>
-#### Secant Theory
+##### Secant Theory
 
 ```
 The Secant Method is a numerical technique used to find the root of a non-linear equation
@@ -696,7 +716,7 @@ Step 6: The final value of x₁ is taken as the approximate root.
 ```
 
 <a id="secant-code"></a>
-#### Secant Code
+##### Secant Code
 
 ```cpp
 #include<bits/stdc++.h>
@@ -790,7 +810,7 @@ int main () {
 ```
 
 <a id="secant-input"></a>
-#### Secant Input
+##### Secant Input
 
 ```
 2
@@ -799,7 +819,7 @@ int main () {
 ```
 
 <a id="secant-output"></a>
-#### Secant Output
+##### Secant Output
 
 ```
 The polynomial function is: f(x) = 1x^2 -4
@@ -818,13 +838,13 @@ Iteration needed: 4
 ---
 
 <a id="solution-of-linear-equations"></a>
-## Solution of Linear Equations
+### Solution of Linear Equations
 
 <a id="gauss-elimination-method"></a>
-### Gauss Elimination Method
+#### Gauss Elimination Method
 
 <a id="gauss-elimination-theory"></a>
-#### Gauss Elimination Theory
+##### Gauss Elimination Theory
 
 ```
 The Gauss Elimination method solves a system of linear equations by systematically 
@@ -853,7 +873,7 @@ Step 7: Obtain the solution vector X.
 ```
 
 <a id="gauss-elimination-code"></a>
-#### Gauss Elimination Code
+##### Gauss Elimination Code
 
 ```cpp
 #include <iostream>
@@ -983,7 +1003,7 @@ int main() {
 ```
 
 <a id="gauss-elimination-input"></a>
-#### Gauss Elimination Input
+##### Gauss Elimination Input
 
 ```
 3
@@ -993,7 +1013,7 @@ int main() {
 ```
 
 <a id="gauss-elimination-output"></a>
-#### Gauss Elimination Output
+##### Gauss Elimination Output
 
 ```
 
@@ -1052,10 +1072,10 @@ x3 = 5.000000
 ---
 
 <a id="gauss-jordan-elimination-method"></a>
-### Gauss-Jordan Elimination Method
+#### Gauss-Jordan Elimination Method
 
 <a id="gauss-jordan-theory"></a>
-#### Gauss-Jordan Theory
+##### Gauss-Jordan Theory
 
 ```
 
@@ -1082,7 +1102,7 @@ Step 6: Read the solution directly from the augmented matrix.
 ```
 
 <a id="gauss-jordan-code"></a>
-#### Gauss-Jordan Code
+##### Gauss-Jordan Code
 
 ```cpp
 #include <iostream>
@@ -1202,7 +1222,7 @@ int main() {
 ```
 
 <a id="gauss-jordan-input"></a>
-#### Gauss-Jordan Input
+##### Gauss-Jordan Input
 
 ```
 3
@@ -1212,7 +1232,7 @@ int main() {
 ```
 
 <a id="gauss-jordan-output"></a>
-#### Gauss-Jordan Output
+##### Gauss-Jordan Output
 
 ```
 
@@ -1275,10 +1295,10 @@ x3 = 5.000000
 ---
 
 <a id="lu-decomposition-method"></a>
-### LU Decomposition Method
+#### LU Decomposition Method
 
 <a id="lu-decomposition-theory"></a>
-#### LU Decomposition Theory
+##### LU Decomposition Theory
 
 ```
 The LU decomposition method is a numerical technique used to solve a system of 
@@ -1320,7 +1340,7 @@ Step 7: Obtain the solution vector X.
 ```
 
 <a id="lu-decomposition-code"></a>
-#### LU Decomposition Code
+##### LU Decomposition Code
 
 ```cpp
 #include <iostream>
@@ -1461,7 +1481,7 @@ int main()
 ```
 
 <a id="lu-decomposition-input"></a>
-#### LU Decomposition Input
+##### LU Decomposition Input
 
 ```
 3
@@ -1471,7 +1491,7 @@ int main()
 ```
 
 <a id="lu-decomposition-output"></a>
-#### LU Decomposition Output
+##### LU Decomposition Output
 
 ```
 
@@ -1601,10 +1621,10 @@ The system has a Unique Solution.
 ---
 
 <a id="matrix-inversion"></a>
-### Matrix Inversion
+#### Matrix Inversion
 
 <a id="matrix-inversion-theory"></a>
-#### Matrix Inversion Theory
+##### Matrix Inversion Theory
 
 ```  
 
@@ -1632,7 +1652,7 @@ Step 7: Obtain the solution vector X.
 ```
 
 <a id="matrix-inversion-code"></a>
-#### Matrix Inversion Code
+##### Matrix Inversion Code
 
 ```cpp
 #include <iostream>
@@ -1803,7 +1823,7 @@ int main() {
 ```
 
 <a id="matrix-inversion-input"></a>
-#### Matrix Inversion Input
+##### Matrix Inversion Input
 
 ```
 3
@@ -1813,7 +1833,7 @@ int main() {
 ```
 
 <a id="matrix-inversion-output"></a>
-#### Matrix Inversion Output
+##### Matrix Inversion Output
 
 ```
 
@@ -1833,13 +1853,13 @@ Solution:
 ---
 
 <a id="differential-equation-solving"></a>
-## Differential Equation Solving
+### Differential Equation Solving
 
 <a id="runge-kutta-4th-order-method"></a>
-### Runge-Kutta 4th Order Method
+#### Runge-Kutta 4th Order Method
 
 <a id="runge-kutta-theory"></a>
-#### Runge-Kutta Theory
+##### Runge-Kutta Theory
 
 ```
 Runge–Kutta 4th Order (RK4) Method is a numerical technique used to solve first-order ordinary differential equations of the form : dy/dx = f(x, y) , when the initial condition y(x₀) = y₀ is known. In this implementation, the method is applied to the differential equation:
@@ -1875,7 +1895,7 @@ Algorithm:
 ```
 
 <a id="runge-kutta-code"></a>
-#### Runge-Kutta Code
+##### Runge-Kutta Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -1936,7 +1956,7 @@ int main() {
 ```
 
 <a id="runge-kutta-input"></a>
-#### Runge-Kutta Input
+##### Runge-Kutta Input
 
 ```
 3
@@ -1958,7 +1978,7 @@ int main() {
 ```
 
 <a id="runge-kutta-output"></a>
-#### Runge-Kutta Output
+##### Runge-Kutta Output
 
 ```
 Result of y at x = 0.500000is : 0.689680
@@ -1969,13 +1989,13 @@ Result of y at x = 2.500000is : 3.630321
 ---
 
 <a id="interpolation-methods"></a>
-## Interpolation Methods
+### Interpolation Methods
 
 <a id="newton-forward-interpolation"></a>
-### Newton’s Forward Interpolation
+#### Newton’s Forward Interpolation
 
 <a id="newton-forward-theory"></a>
-#### Newton’s Forward Interpolation Theory
+##### Newton’s Forward Interpolation Theory
 
 ```
 Newton’s Forward Interpolation is a numerical technique used to estimate the value of a function at a given point using equally spaced tabulated data, when the value lies near the beginning of the data table.
@@ -2005,7 +2025,7 @@ Step 6: Evaluate the required value of f(x).
 
 
 <a id="newton-forward-code"></a>
-#### Newton’s Forward Interpolation Code
+##### Newton’s Forward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2084,7 +2104,7 @@ int main()
 ```
 
 <a id="newton-forward-input"></a>
-#### Newton’s Forward Interpolation Input
+##### Newton’s Forward Interpolation Input
 
 ```
 5
@@ -2097,7 +2117,7 @@ int main()
 ```
 
 <a id="newton-forward-output"></a>
-#### Newton’s Forward Interpolation Output
+##### Newton’s Forward Interpolation Output
 
 ```
 Forward Difference Table:
@@ -2114,10 +2134,10 @@ Interpolated value at X = 1895 is Y = 54.8528
 ---
 
 <a id="newton-backward-interpolation"></a>
-### Newton's Backward Interpolation
+#### Newton's Backward Interpolation
 
 <a id="newton-backward-theory"></a>
-#### Newton's Backward Interpolation Theory
+##### Newton's Backward Interpolation Theory
 ```
 Newton’s Backward Interpolation is used to estimate the value of a function when the required value lies near the end of the data table.
 
@@ -2144,7 +2164,7 @@ Step 6: Evaluate the required value of f(x).
 ```
 
 <a id="newton-backward-code"></a>
-#### Newton's Backward Interpolation Code
+##### Newton's Backward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2219,7 +2239,7 @@ int main()
 ```
 
 <a id="newton-backward-input"></a>
-#### Newton's Backward Interpolation Input
+##### Newton's Backward Interpolation Input
 
 ```
 5
@@ -2232,7 +2252,7 @@ int main()
 ```
 
 <a id="newton-backward-output"></a>
-#### Newton's Backward Interpolation Output
+##### Newton's Backward Interpolation Output
 
 ```
 Forward Difference Table:
@@ -2249,10 +2269,10 @@ Interpolated value at X = 1895 is Y = 54.8528
 ---
 
 <a id="newton-divided-difference-interpolation"></a>
-### Newton’s Divided Difference Interpolation
+#### Newton’s Divided Difference Interpolation
 
 <a id="newton-divided-difference-theory"></a>
-#### Newton’s Divided Difference Theory
+##### Newton’s Divided Difference Theory
 
 ```
 Newton’s Divided Difference Interpolation is used to estimate function values when the data points are not equally spaced.
@@ -2274,7 +2294,7 @@ Step 5: Evaluate f(x) at the desired point.
 
 ```
 <a id="newton-divided-difference-code"></a>
-#### Newton’s Divided Difference Code
+##### Newton’s Divided Difference Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2339,7 +2359,7 @@ int main()
 ```
 
 <a id="newton-divided-difference-input"></a>
-#### Newton’s Divided Difference Input
+##### Newton’s Divided Difference Input
 
 ```
 5
@@ -2352,7 +2372,7 @@ int main()
 ```
 
 <a id="newton-divided-difference-output"></a>
-#### Newton’s Divided Difference Output
+##### Newton’s Divided Difference Output
 
 ```
 Divided Difference Table:
@@ -2369,13 +2389,13 @@ Interpolated value at X = 1895 is Y = 54.8528
 ---
 
 <a id="numerical-differentiation"></a>
-## Numerical Differentiation
+### Numerical Differentiation
 
 <a id="differentiation-forward-interpolation"></a>
-### Differentiation by Forward Interpolation
+#### Differentiation by Forward Interpolation
 
 <a id="differentiation-forward-theory"></a>
-#### Differentiation by Forward Interpolation Theory
+##### Differentiation by Forward Interpolation Theory
 
 ```
 Newton’s Forward Differentiation is used to approximate the derivative of a function using equally spaced tabulated data, when the point of differentiation lies near the beginning of the data table.
@@ -2401,7 +2421,7 @@ Step 6: Evaluate the approximate value of dy/dx.
 ```
 
 <a id="differentiation-forward-code"></a>
-#### Differentiation by Forward Interpolation Code
+##### Differentiation by Forward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2468,7 +2488,7 @@ int main()
 ```
 
 <a id="differentiation-forward-input"></a>
-#### Differentiation Forward Input
+##### Differentiation Forward Input
 
 ```
 5
@@ -2481,7 +2501,7 @@ int main()
 ```
 
 <a id="differentiation-forward-output"></a>
-#### Differentiation Forward Output
+##### Differentiation Forward Output
 
 ```
 At x = 1.2, Derivative = 3.54662
@@ -2490,10 +2510,10 @@ At x = 1.2, Derivative = 3.54662
 ---
 
 <a id="differentiation-backward-interpolation"></a>
-### Differentiation by Backward Interpolation
+#### Differentiation by Backward Interpolation
 
 <a id="differentiation-backward-theory"></a>
-#### Differentiation by Backward Interpolation Theory
+##### Differentiation by Backward Interpolation Theory
 
 ```
 Newton’s Backward Differentiation is used to approximate the derivative of a function using equally spaced tabulated data, when the point of differentiation lies near the end of the data table.
@@ -2519,7 +2539,7 @@ Step 6: Evaluate the approximate value of dy/dx.
 ```
 
 <a id="differentiation-backward-code"></a>
-#### Differentiation by Backward Interpolation Code
+##### Differentiation by Backward Interpolation Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2586,7 +2606,7 @@ int main()
 ```
 
 <a id="differentiation-backward-input"></a>
-#### Differentiation by Backward Interpolation Input
+##### Differentiation by Backward Interpolation Input
 
 ```
 5
@@ -2599,7 +2619,7 @@ int main()
 ```
 
 <a id="differentiation-backward-output"></a>
-#### Differentiation by Backward Interpolation Output
+##### Differentiation by Backward Interpolation Output
 
 ```
 At x = 3.4, Derivative = 30.5605
@@ -2608,13 +2628,13 @@ At x = 3.4, Derivative = 30.5605
 ---
 
 <a id="curve-fitting--regression"></a>
-## Curve Fitting / Regression
+### Curve Fitting / Regression
 
 <a id="linear-regression"></a>
-### Linear Regression
+#### Linear Regression
 
 <a id="linear-regression-theory"></a>
-#### Linear Regression Theory
+##### Linear Regression Theory
 
 ```
 Curve fitting is a numerical method used to determine a mathematical relationship that
@@ -2652,7 +2672,7 @@ Step 6: Write the equation of the best-fit straight line y = a + bx.
 ```
 
 <a id="linear-regression-code"></a>
-#### Linear Regression Code
+##### Linear Regression Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -2745,7 +2765,7 @@ while (true) {
 ```
 
 <a id="linear-regression-input"></a>
-#### Linear Regression Input
+##### Linear Regression Input
 
 ```
 5
@@ -2774,7 +2794,7 @@ while (true) {
 ```
 
 <a id="linear-regression-output"></a>
-#### Linear Regression Output
+##### Linear Regression Output
 
 ```
 Test Case 1
@@ -2792,10 +2812,10 @@ Error: Regression cannot be computed.
 ---
 
 <a id="polynomial-regression"></a>
-### Polynomial Regression
+#### Polynomial Regression
 
 <a id="polynomial-regression-theory"></a>
-#### Polynomial Regression Theory
+##### Polynomial Regression Theory
 
 ```
 
@@ -2839,7 +2859,7 @@ Step 6: Write the equation of the best-fit polynomial.
 ```
 
 <a id="polynomial-regression-code"></a>
-#### Polynomial Regression Code
+##### Polynomial Regression Code
 
 ```cpp
 
@@ -2959,7 +2979,7 @@ int main() {
 ```
 
 <a id="polynomial-regression-input"></a>
-#### Polynomial Regression Input
+##### Polynomial Regression Input
 
 ```
 2
@@ -2981,7 +3001,7 @@ int main() {
 ```
 
 <a id="polynomial-regression-output"></a>
-#### Polynomial Regression Output
+##### Polynomial Regression Output
 
 ```
 Test Case 1:
@@ -2998,10 +3018,10 @@ Predicted y for x = 5.0000: 125.0000
 ---
 
 <a id="transcendental-regression"></a>
-### Transcendental Regression
+#### Transcendental Regression
 
 <a id="transcendental-regression-theory"></a>
-#### Transcendental Regression Theory
+##### Transcendental Regression Theory
 
 ```
 ❖ Transcendental regression is a numerical method used to fit data to equations involving transcendental functions such as exponential, logarithmic, or power functions.
@@ -3039,7 +3059,7 @@ Step 7: Write the required transcendental curve.
 ```
 
 <a id="transcendental-regression-code"></a>
-#### Transcendental Regression Code
+##### Transcendental Regression Code
 
 ```cpp
 #include<bits/stdc++.h>
@@ -3152,7 +3172,7 @@ int main() {
 ```
 
 <a id="transcendental-regression-input"></a>
-#### Transcendental Regression Input
+##### Transcendental Regression Input
 
 ```
 3
@@ -3171,7 +3191,7 @@ int main() {
 ```
 
 <a id="transcendental-regression-output"></a>
-#### Transcendental Regression Output
+##### Transcendental Regression Output
 
 ```
 Test Case 1:
@@ -3193,13 +3213,13 @@ Predicted y for x=5.000000: 19.652962
 ---
 
 <a id="numerical-integration"></a>
-## Numerical Integration
+### Numerical Integration
 
 <a id="simpsons-13-rule"></a>
-### Simpson's 1/3 Rule
+#### Simpson's 1/3 Rule
 
 <a id="simpson-13-theory"></a>
-#### Simpson 1/3 Theory
+##### Simpson 1/3 Theory
 
 ```
 Simpson’s 1/3 Rule is a numerical integration technique used to approximate the definite
@@ -3230,7 +3250,7 @@ Step 6: Evaluate the approximate value of the integral.
 ```
 
 <a id="simpson-13-code"></a>
-#### Simpson 1/3 Code
+##### Simpson 1/3 Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -3308,7 +3328,7 @@ int main() {
 ```
 
 <a id="simpson-13-input"></a>
-#### Simpson 1/3 Input
+##### Simpson 1/3 Input
 
 ```
 2
@@ -3319,7 +3339,7 @@ int main() {
 ```
 
 <a id="simpson-13-output"></a>
-#### Simpson 1/3 Output
+##### Simpson 1/3 Output
 
 ```
 Test Case 1:
@@ -3332,10 +3352,10 @@ Approximate integral from 1.000 to 3.000 is = 18.667
 ---
 
 <a id="simpsons-38-rule"></a>
-### Simpson's 3/8 Rule
+#### Simpson's 3/8 Rule
 
 <a id="simpson-38-theory"></a>
-#### Simpson 3/8 Theory
+##### Simpson 3/8 Theory
 
 ```
 Simpson’s 3/8 Rule is a numerical integration method used to approximate definite integrals
@@ -3364,7 +3384,7 @@ Step 6: Evaluate the approximate value of the integral.
 ```
 
 <a id="simpson-38-code"></a>
-#### Simpson 3/8 Code
+##### Simpson 3/8 Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -3434,7 +3454,7 @@ int main() {
 ```
 
 <a id="simpson-38-input"></a>
-#### Simpson 3/8 Input
+##### Simpson 3/8 Input
 
 ```
 #include <bits/stdc++.h>
@@ -3504,7 +3524,7 @@ int main() {
 ```
 
 <a id="simpson-38-output"></a>
-#### Simpson 3/8 Output
+##### Simpson 3/8 Output
 
 ```
 Test Case 1:
