@@ -325,6 +325,8 @@ No. of iteration: 4
 The root is: -0.003125
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="false-position-method"></a>
@@ -523,6 +525,8 @@ No. of iteration: 1
 The root is: -1.76831e-14
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="newton-raphson-method"></a>
@@ -681,6 +685,8 @@ The root is: 2
 Iteration needed: 4
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="secant-method"></a>
@@ -834,6 +840,8 @@ Root 2:
 The root is: 1.99995
 Iteration needed: 4
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -1069,6 +1077,8 @@ x2 = -9.000000
 x3 = 5.000000
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="gauss-jordan-elimination-method"></a>
@@ -1291,6 +1301,8 @@ x1 = 7.000000
 x2 = -9.000000
 x3 = 5.000000
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -1618,6 +1630,8 @@ x1 = 1.000000
 The system has a Unique Solution.
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="matrix-inversion"></a>
@@ -1850,6 +1864,8 @@ Solution:
 3 1 2 
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="differential-equation-solving"></a>
@@ -1985,6 +2001,8 @@ Result of y at x = 0.500000is : 0.689680
 Result of y at x = 1.500000is : 1.840128
 Result of y at x = 2.500000is : 3.630321
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -2131,6 +2149,8 @@ Forward Difference Table:
 Interpolated value at X = 1895 is Y = 54.8528
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="newton-backward-interpolation"></a>
@@ -2266,6 +2286,8 @@ Forward Difference Table:
 Interpolated value at X = 1895 is Y = 54.8528
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="newton-divided-difference-interpolation"></a>
@@ -2385,6 +2407,8 @@ Divided Difference Table:
 
 Interpolated value at X = 1895 is Y = 54.8528
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -2507,6 +2531,8 @@ int main()
 At x = 1.2, Derivative = 3.54662
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="differentiation-backward-interpolation"></a>
@@ -2624,6 +2650,8 @@ int main()
 ```
 At x = 3.4, Derivative = 30.5605
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -2808,6 +2836,8 @@ Predicted Y = 17 for X = 8
 Test Case 3
 Error: Regression cannot be computed.
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -3015,6 +3045,8 @@ Function: y = 0.0000 + -0.0000*x^1 + 0.0000*x^2 + 1.0000*x^3
 Predicted y for x = 5.0000: 125.0000
 ```
 
+[⬆ Back to top](#course-contents)
+
 ---
 
 <a id="transcendental-regression"></a>
@@ -3209,6 +3241,8 @@ Power-law Regression
 Function: y = 1.780428 * x^1.492058
 Predicted y for x=5.000000: 19.652962
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
 
@@ -3474,5 +3508,7 @@ Test Case 2:
 Approximate integral from 0.000 to 4.500 is = 55.125
 
 ```
+
+[⬆ Back to top](#course-contents)
 
 ---
