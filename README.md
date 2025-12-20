@@ -1,3 +1,4 @@
+<a id="top"></a>
 - [Course Contents](#course-contents)
   - [Solution of Non-Linear Equations](#solution-of-non-linear-equations)
     - [Bisection Method](#bisection-method)
@@ -325,7 +326,7 @@ No. of iteration: 4
 The root is: -0.003125
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -525,7 +526,7 @@ No. of iteration: 1
 The root is: -1.76831e-14
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -685,7 +686,7 @@ The root is: 2
 Iteration needed: 4
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -841,7 +842,7 @@ The root is: 1.99995
 Iteration needed: 4
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -1077,7 +1078,7 @@ x2 = -9.000000
 x3 = 5.000000
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -1302,7 +1303,7 @@ x2 = -9.000000
 x3 = 5.000000
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -1630,7 +1631,7 @@ x1 = 1.000000
 The system has a Unique Solution.
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -1864,7 +1865,7 @@ Solution:
 3 1 2 
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2002,7 +2003,7 @@ Result of y at x = 1.500000is : 1.840128
 Result of y at x = 2.500000is : 3.630321
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2149,7 +2150,7 @@ Forward Difference Table:
 Interpolated value at X = 1895 is Y = 54.8528
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2286,7 +2287,7 @@ Forward Difference Table:
 Interpolated value at X = 1895 is Y = 54.8528
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2408,7 +2409,7 @@ Divided Difference Table:
 Interpolated value at X = 1895 is Y = 54.8528
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2531,7 +2532,7 @@ int main()
 At x = 1.2, Derivative = 3.54662
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2651,7 +2652,7 @@ int main()
 At x = 3.4, Derivative = 30.5605
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -2837,7 +2838,7 @@ Test Case 3
 Error: Regression cannot be computed.
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -3045,7 +3046,7 @@ Function: y = 0.0000 + -0.0000*x^1 + 0.0000*x^2 + 1.0000*x^3
 Predicted y for x = 5.0000: 125.0000
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -3242,7 +3243,7 @@ Function: y = 1.780428 * x^1.492058
 Predicted y for x=5.000000: 19.652962
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -3383,7 +3384,7 @@ Test Case 2:
 Approximate integral from 1.000 to 3.000 is = 18.667
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
 
@@ -3511,6 +3512,6 @@ Approximate integral from 0.000 to 4.500 is = 55.125
 
 ```
 
-[⬆ Back to top](#course-contents)
+[Back to top](#top)
 
 ---
